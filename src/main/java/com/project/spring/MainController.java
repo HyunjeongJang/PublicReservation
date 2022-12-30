@@ -1,4 +1,4 @@
-package org.sample.controller;
+package com.project.spring;
 
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ public class MainController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
         mav.addObject("title", "Spring Test");
-        mav.addObject("content", "테스트합시당");
+        mav.addObject("content", "경로좀 찾아주세요");
 
         return mav;
     }
