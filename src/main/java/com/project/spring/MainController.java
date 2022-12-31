@@ -15,7 +15,7 @@ public class MainController {
 
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
-        mav.addObject("content", "경로좀 찾아주세요");
+        mav.addObject("content", "경로는 해결하였다");
 
         return mav;
     }
