@@ -18,7 +18,6 @@
 
     <h1>카카오 로그인</h1>
     <span c:if = ${userId == null }>
-<%--        <a href="http://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/login&response_type=code">--%>
         <a href="https://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/login&response_type=code">
             <img src="<c:url value="/resources/images/kakao/kakao_login_medium_wide.png"/>">
         </a>
@@ -39,8 +38,6 @@
     <%--                    <a href="${contextPath}/myPage">마이페이지</a>--%>
     <%--                    <a href="${contextPath}/logout">로그아웃</a>--%>
     <%--                </c:otherwise>--%>
-
-
 
 </div>
 
