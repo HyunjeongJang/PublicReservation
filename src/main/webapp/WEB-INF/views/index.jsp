@@ -4,13 +4,11 @@
 <html>
 <head>
     <%@ page isELIgnored="false" %>
-    <title>${title}</title>
+    <title>메인페이지</title>
 </head>
 <body>
 
 <jsp:include page="common/header.jsp" />
-
-<h2>${content}</h2>
 
 </body>
 </html>

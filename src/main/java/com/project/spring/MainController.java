@@ -10,13 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
 
     @RequestMapping(value = "/")
-    public ModelAndView index(){
-        log.info("index controller start!!");
-
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("index");
-        mav.addObject("content", "경로는 해결하였다");
-
-        return mav;
+    public ModelAndView index(ModelAndView mv){
+        log.info("메인 페이지");
+        mv.setViewName("index");
+        return mv;
     }
 }
