@@ -4,7 +4,7 @@
 <html>
 <head>
     <%@ page isELIgnored="false" %>
-    <title>메인페이지</title>
+    <title>Public Reservation Service</title>
 </head>
 <body>
 

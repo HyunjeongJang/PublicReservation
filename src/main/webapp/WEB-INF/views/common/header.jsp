@@ -39,7 +39,6 @@
         </div>
 
         <div id="header_1_right">
-            <a href="<c:url value="/user/login"/>">회원가입</a>
             <a href="login.me"/>로그인</a>
 
 <%--            <a data-toggle="modal" data-target="#loginModal">로그인</a>--%>
@@ -69,39 +68,6 @@
     </div>
 </div>
 
-<%--<!-- 로그인 클릭시 뜨는 모달( 기존에 안보이다가 버튼클릭시 보임) -->--%>
-<%--<div class="modal fade" id="loginModal">--%>
-<%--    <div class="modal-dialog modal-sm">--%>
-<%--        <div class="modal-content">--%>
-<%--            <!-- 모달 해더 -->--%>
-<%--            <div class="modal-header">--%>
-<%--                <h4 class="modal-title">Login</h4>--%>
-<%--                <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-<%--            </div>--%>
-
-<%--            <form action="${contextPath}/login" method="post">--%>
-<%--                <!--  모달 바디 -->--%>
-<%--                <div class="modal-body">--%>
-<%--&lt;%&ndash;                    <label for="userId" class="mr-sm-2">ID : </label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <input type="text" class="form-controll mb-2 mr-sm-2" placeholder="Enter ID" id="userId" name="userId"> <br>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <label for="userPwd" class="mr-sm-2">Password : </label>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                    <input type="password" class="form-controll mb-2 mr-sm-2" placeholder="Enter Password" id="userPwd" name="userPwd">&ndash;%&gt;--%>
-
-
-<%--                    <a href="http://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/login&response_type=code HTTP/1.1">--%>
-<%--                        <img src="<c:url value="/resources/images/kakao/kakao_login_medium_narrow.png"/>">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-
-<%--                <!-- 모달 푸터 -->--%>
-<%--                <div class="modal-footer">--%>
-<%--                    <button type="submit" class="btn btn-primary">로그인</button>--%>
-<%--                    <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>--%>
-<%--                </div>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 </body>
 </html>

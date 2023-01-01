@@ -15,7 +15,7 @@ public class UserController {
     // 회원 로그인 페이지 이동
     @GetMapping("login.me")
     public String login() {
-        return "user/login";
+        return "user/loginPage";
     }
 
 //    @GetMapping("/user/login/error")

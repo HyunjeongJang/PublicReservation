@@ -18,12 +18,14 @@
 
     <h1>카카오 로그인</h1>
     <span c:if = ${userId == null }>
-        <a href="http://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/user/login&response_type=code HTTP/1.1">
+<%--        <a href="http://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/login&response_type=code">--%>
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/login&response_type=code">
             <img src="<c:url value="/resources/images/kakao/kakao_login_medium_wide.png"/>">
         </a>
     </span>
+
     <span c:if = ${userId != null }>
-        <form name="logout" action="http://localhost:8090/user/logout">
+        <form name="logout" action="http://localhost:8090/logout">
             <input type="submit" value="로그아웃">
         </form>
     </span>
