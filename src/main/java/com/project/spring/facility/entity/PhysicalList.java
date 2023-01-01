@@ -1,4 +1,4 @@
-package com.project.spring.physical.entity;
+package com.project.spring.facility.entity;
 
 public class PhysicalList {
 

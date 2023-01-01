@@ -10,5 +10,21 @@
 
 <jsp:include page="common/header.jsp" />
 
+
+<c:forEach items="${cultureList}" var="culture">
+    <tr>
+        <td>
+            <c:out value="${culture.svcid}"/>
+        </td>
+        <td>
+            <c:out value="${culture.minClassNm}"/>
+        </td>
+    </tr>
+</c:forEach>
+
+
+
+
+
 </body>
 </html>

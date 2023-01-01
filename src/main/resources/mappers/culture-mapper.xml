@@ -6,12 +6,12 @@
 
     <insert id="insertInfo">
         INSERT INTO CULTURAL_FACILITY
-            ( , , , )
-        values (#{}, #{}, #{}, #{})
+            (SVCID, MINCLASSNM , SVCSTATNM , SVCNM )
+        values (#{svcId}, #{minClassNm}, #{svcStatNm}, #{svcNm})
     </insert>
 
 
-    <select id="cfList" resultType="">
+    <select id="cultureList" resultType="GovDataDTO">
         select *
         from CULTURAL_FACILITY
     </select>

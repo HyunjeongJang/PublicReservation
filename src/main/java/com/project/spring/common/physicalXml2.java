@@ -19,7 +19,7 @@ public class physicalXml2 {
             // 상위 5개는 필수적으로 순서바꾸지 않고 호출해야 합니다.
 
             // 서비스별 추가 요청 인자이며 자세한 내용은 각 서비스별 '요청인자'부분에 자세히 나와 있습니다.
-//            urlBuilder.append("/" + URLEncoder.encode("MINCLASSNM","UTF-8")); /* 서비스별 추가 요청인자들*/
+            urlBuilder.append("/" + URLEncoder.encode("MINCLASSNM","UTF-8")); /* 서비스별 추가 요청인자들*/
 
             URL url = new URL(urlBuilder.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
