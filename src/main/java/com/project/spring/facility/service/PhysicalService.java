@@ -1,4 +1,8 @@
 package com.project.spring.facility.service;
 
-public class PhysicalService {
+import java.util.List;
+import java.util.Map;
+
+public interface PhysicalService {
+    int PhysicalDB(List<Map<String, String>> list);
 }
