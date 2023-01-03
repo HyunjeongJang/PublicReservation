@@ -1,5 +1,6 @@
 package com.project.spring;
 
+import com.project.spring.common.PhysicalInfoExplorer;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ public class MainController {
     public ModelAndView index(ModelAndView mv){
         log.info("MainPage");
         mv.setViewName("index");
+
         return mv;
     }
 }

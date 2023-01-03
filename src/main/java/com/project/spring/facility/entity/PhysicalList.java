@@ -16,6 +16,6 @@ public class PhysicalList {
         private String telNo;
         private String revStdDay;
         private String svcUrl;
-
+        
     }
 }

@@ -19,4 +19,6 @@ public class GovDataDTO {
     private String revStdDay;
     private String svcUrl;
 
+
+
 }
