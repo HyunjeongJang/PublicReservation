@@ -28,7 +28,7 @@
 
 <div id="header">
 
-   <div id="header_1">
+    <div id="header_1">
 
         <div id="header_1_left">
             <b>공공서비스 예약</b>
@@ -39,31 +39,33 @@
         </div>
 
         <div id="header_1_right">
-            <a href="login.me"/>로그인</a>
+            <a href="login.me"/><b>로그인</b></a>
 
-<%--            <a data-toggle="modal" data-target="#loginModal">로그인</a>--%>
-<%--            <c:choose>--%>
-<%--                <c:when test="${ loginUser == null }">--%>
-<%--                    <a href="${contextPath}/enrollForm">회원가입</a>--%>
-<%--                    <a data-toggle="modal" data-target="#loginModal">로그인</a>--%>
-<%--                </c:when>--%>
-<%--                <c:otherwise>--%>
-<%--                    <label>${loginUser.userName }님 환영합니다.</label> &nbsp;&nbsp;--%>
-<%--                    <a href="${contextPath}/myPage">마이페이지</a>--%>
-<%--                    <a href="${contextPath}/logout">로그아웃</a>--%>
-<%--                </c:otherwise>--%>
-<%--            </c:choose>--%>
+            <%--            <a data-toggle="modal" data-target="#loginModal">로그인</a>--%>
+            <%--            <c:choose>--%>
+            <%--                <c:when test="${ loginUser == null }">--%>
+            <%--                    <a href="${contextPath}/enrollForm">회원가입</a>--%>
+            <%--                    <a data-toggle="modal" data-target="#loginModal">로그인</a>--%>
+            <%--                </c:when>--%>
+            <%--                <c:otherwise>--%>
+            <%--                    <label>${loginUser.userName }님 환영합니다.</label> &nbsp;&nbsp;--%>
+            <%--                    <a href="${contextPath}/myPage">마이페이지</a>--%>
+            <%--                    <a href="${contextPath}/logout">로그아웃</a>--%>
+            <%--                </c:otherwise>--%>
+            <%--            </c:choose>--%>
 
         </div>
     </div>
 
     <div id="header_2">
         <ul>
-            <li><a href="${contextPath}/">HOME</a></li>
-            <c:forEach items="${facilityTypeList}" var="facilityType">
-                <li><a href="${contextPath}/facility/list/${facilityType.facilityCd}">${facilityType.fName}</a></li>
-            </c:forEach>
-            <li><a href="${contextPath}/reservation">예약확인</a></li>
+            <li><a href="<c:url value="/"/>">HOME</a></li>
+            <%--            <c:forEach items="${facilityTypeList}" var="facilityType">--%>
+            <%--                <li><a href="${contextPath}/facility/list/${facilityType.facilityCd}">${facilityType.fName}</a></li>--%>
+            <%--            </c:forEach>--%>
+            <li><a href="">체육시설</a> </li>
+            <li><a href="/showList">문화시설</a> </li>
+            <li><a href="">예약확인</a></li>
         </ul>
     </div>
 </div>

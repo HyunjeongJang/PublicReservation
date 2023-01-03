@@ -10,24 +10,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>로그인</title>
 </head>
 <body>
 
 <div>
 
-    <h1>카카오 로그인</h1>
-    <span c:if = ${userId == null }>
-        <a href="https://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/login&response_type=code">
-            <img src="<c:url value="/resources/images/kakao/kakao_login_medium_wide.png"/>">
-        </a>
-    </span>
+    <jsp:include page="../common/header.jsp" />
+    <br><br>
 
-    <span c:if = ${userId != null }>
-        <form name="logout" action="http://localhost:8090/logout">
-            <input type="submit" value="로그아웃">
-        </form>
-    </span>
+    <div align="center">
+        <h1>로그인</h1>
+        <br><br><br>
+        <span c:if = ${userId == null }>
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/PublicReservation/login&response_type=code">
+                <img src="<c:url value="/resources/images/oauth/kakao_login_medium_wide.png"/>">
+            </a>
+        </span>
+    </div>
+
+
+<%--    <span c:if = ${userId != null }>--%>
+<%--        <form name="logout" action="http://localhost:8090/logout">--%>
+<%--            <input type="submit" value="로그아웃">--%>
+<%--        </form>--%>
+<%--    </span>--%>
 
     <%--                <c:when test="${ loginUser == null }">--%>
     <%--                    <a href="${contextPath}/enrollForm">회원가입</a>--%>

@@ -16,6 +16,7 @@
     <mappers>
 <!--        <mapper resource="/mappers/user-mapper.xml"/>-->
         <mapper resource="/mappers/physical-mapper.xml"/>
+        <mapper resource="/mappers/user-mapper.xml"/>
     </mappers>
 
 

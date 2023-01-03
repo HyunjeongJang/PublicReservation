@@ -12,5 +12,3 @@ public interface CultureService {
 
     List<GovDataDTO> cultureList();
 }
-
-
