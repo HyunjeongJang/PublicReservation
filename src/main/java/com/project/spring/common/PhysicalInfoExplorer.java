@@ -27,14 +27,14 @@ public class PhysicalInfoExplorer {
     }
 
 
-    public  void update(){
+    public void update(){
         int result = 0;
         List<Map<String, String>> list = new ArrayList<>();
 
         try {
             // 학원 목록 읽어오기
             createDocument(list);
-                result += physicalService.PhysicalDB(list);
+            result += physicalService.PhysicalDB(list);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,8 +98,8 @@ public class PhysicalInfoExplorer {
 
             doc.getDocumentElement().normalize();
 
-                // 목록 정보 데이터 파싱하기
-                parseXml(doc.getDocumentElement(), list);
+            // 목록 정보 데이터 파싱하기
+            parseXml(doc.getDocumentElement(), list);
 
         } catch (Exception e) {
             e.printStackTrace();
