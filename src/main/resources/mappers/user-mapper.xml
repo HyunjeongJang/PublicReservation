@@ -1,3 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userMapper">
+
+    <resultMap type="user" id="userResultSet">
+        <result column="USER_NO" property="userNo"></result>
+        <result column="PROVIDER" property="provider"></result>
+        <result column="PROVIDER_ID" property="providerId"></result>
+        <result column="USERNAME" property="username"></result>
+        <result column="EMAIL" property="email"></result>
+        <result column="PROFILE_IMAGE" property="profileImage"></result>
+        <result column="ADDRESS" property="address"></result>
+        <result column="INTEREST" property="interest"></result>
+        <result column="LATEST_SEARCH" property="latestSearch"></result>
+    </resultMap>
+
+    <insert id="insert" parameterType="user">
+        INSERT INTO MEMBER
+            (USER_NO, PROVIDER, PROVIDER_ID, USERNAME, EMAIL, PROFILE_IMAGE)
+        VALUES
+            (SEQ_UNO.NEXTVAL, #{provider}, #{providerId}, #{username}, #{email}, #{profileImage})
+    </insert>
+
+</mapper>

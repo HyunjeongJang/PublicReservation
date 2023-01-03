@@ -36,10 +36,8 @@ public class CultureInfoExplorer {
         // "&pageNo=100&numOfRows=100"  갯수와 로우 100까지는 테스트 10000은 404에러
         String str = "";    //return을 위해서
         String parsingUrl = "";//Parsing할 URL
-        String urlBuilder = "http://openAPI.seoul.go.kr:8088/5466506d73616868373275546a7274/xml/ListPublicReservationCulture/1/5/";
-                ;
-//        String urlBuilder = "http://openAPI.seoul.go.kr:8088/(인증키)/xml/ListPublicReservationCulture/1/5/" + "?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + "B204rJXsKzDzIedVMlL4h45QoUbhGH0fct7UD3vgb9i88%2BtSHyCcy8bsdJ7BPku6Zekn59ErheqrgdSX31ZiRg%3D%3D" + /*Service Key*/
-//                "&pageNo=100" + "&" + URLEncoder.encode("wkpl_nm", "UTF-8") + "=" + URLEncoder.encode(searchName, "UTF-8");/*URL*//*사업장명*/
+        String urlBuilder = "http://openAPI.seoul.go.kr:8088/5466506d73616868373275546a7274/xml/ListPublicReservationCulture/1/10/";
+
         URL url = new URL(urlBuilder);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -58,7 +56,7 @@ public class CultureInfoExplorer {
         }
         rd.close();
         conn.disconnect();
-        System.out.println(sb.toString());
+        System.out.println(sb.toString());  // TODO : 여기까지 됨
 
         parsingUrl = url.toString();
         System.out.println(parsingUrl);

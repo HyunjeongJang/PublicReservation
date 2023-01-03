@@ -1,5 +1,6 @@
 package com.project.spring.user.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,26 +9,33 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
+import com.project.spring.client.oauth.KakaoOAuthClient;
+import com.project.spring.client.oauth.dto.OAuthUser;
+import com.project.spring.user.entity.User;
+import com.project.spring.user.service.UserService;
+
+import lombok.RequiredArgsConstructor;
+
 @RestController
 public class LoginController {
 
     KakaoAPI kakaoApi = new KakaoAPI();
 
+    // 필드 주입방식
+    private final UserService userService;
+
+    @Autowired
+    public LoginController(UserService userService) {
+        this.userService = userService;
+    }
+
     @RequestMapping(value="/login")
     public ModelAndView login(@RequestParam("code") String code, HttpSession session) {
         ModelAndView mav = new ModelAndView();
-        // 1. 인증코드 요청 전달
-        String accessToken = kakaoApi.getAccessToken(code);
-        // 2. 인증코드로 토큰 전달
-        HashMap<String, Object> userInfo = kakaoApi.getUserInfo(accessToken);
+        User loginUser = userService.login(code);
 
-        System.out.println("login info : " + userInfo.toString());
-
-        if(userInfo.get("email") != null) {
-            session.setAttribute("userId", userInfo.get("email"));
-            session.setAttribute("accessToken", accessToken);
-        }
-        mav.addObject("userId", userInfo.get("email"));
+        System.out.println("login info : " + loginUser.toString());
+        session.setAttribute("loginUser", loginUser);
         mav.setViewName("index");
         return mav;
     }
@@ -42,11 +50,5 @@ public class LoginController {
         mav.setViewName("index");
         return mav;
     }
-
-
-
-
-
-
 
 }

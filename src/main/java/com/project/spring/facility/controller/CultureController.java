@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,8 +26,13 @@ public class CultureController {
         this.cultureService = apiService;
     }
 
-    //검색시 데이터가 없으면 db에 추가하도록 처리한다.
-    @GetMapping("/searchList")
+    @RequestMapping("/showList")
+    public String showlist() {
+        return "facility/facilityListPage";
+    }
+
+    //검색시 데이터가 없으면 db에 추가하도록 처리
+    @GetMapping("/searchCultureList")
     public void searchInfo(Model model) throws ParserConfigurationException, SAXException, IOException {
 
         log.info("파싱 스타트 체크");
