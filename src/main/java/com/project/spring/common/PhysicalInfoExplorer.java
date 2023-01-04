@@ -39,7 +39,7 @@ public class PhysicalInfoExplorer {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        logger.info("총 학원 갯수:" + result);
+        logger.info("총 갯수 :" + result);
     }
 
     //tag값 정보를 가져오는 메소드
@@ -59,8 +59,8 @@ public class PhysicalInfoExplorer {
 
 
     private void parseXml(Element root, List<Map<String, String>> list) {
-        NodeList nList = root.getElementsByTagName("row").item(0).getChildNodes();
-
+//        NodeList nList = root.getElementsByTagName("row").item(0).getChildNodes();
+            NodeList nList = root.getElementsByTagName("row");
         for (int i = 0; i < nList.getLength(); i++) {
             Map<String, String> map = new HashMap<>();
             Node nNode = nList.item(i);
@@ -79,7 +79,9 @@ public class PhysicalInfoExplorer {
             map.put("telNo", getTagValue("TELNO", eElement)); // 실제 수강비
             map.put("revStdDay", getTagValue("REVSTDDAYNM", eElement)); // 회차
             map.put("svcUrl", getTagValue("REVSTDDAY", eElement)); // 회차
-
+            map.put("svcOpnBgnDt",getTagValue("SVCOPNBGNDT",eElement));
+            map.put("svcOpnEnDdt",getTagValue("SVCOPNENDDT",eElement));
+//            System.out.println(map);
             list.add(map);
         }
     }

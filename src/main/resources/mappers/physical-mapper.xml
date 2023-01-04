@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="chattingMapper">
+<mapper namespace="physicalMapper">
 
     <insert id="PhysicalDB">
         INSERT INTO PHYSICAL_FACILITY
@@ -15,8 +15,12 @@
                 #{y},
                 #{rcptBgnDt},
                 #{rcptEndDt},
-                #{areaNm})
-
+                #{areaNm},
+                #{telNo},
+                #{revStdDay},
+                #{svcUrl},
+                #{svcOpnBgnDt},
+                #{svcOpnEnDdt})
     </insert>
 
 </mapper>
