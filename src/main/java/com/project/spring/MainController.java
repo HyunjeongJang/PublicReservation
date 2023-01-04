@@ -10,18 +10,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Log4j
 public class MainController {
 
-    private final PhysicalInfoExplorer physicalInfoExplorer;
-
-    public MainController(PhysicalInfoExplorer physicalInfoExplorer) {
-        this.physicalInfoExplorer = physicalInfoExplorer;
-    }
+//    private final PhysicalInfoExplorer physicalInfoExplorer;
+//
+//    public MainController(PhysicalInfoExplorer physicalInfoExplorer) {
+//        this.physicalInfoExplorer = physicalInfoExplorer;
+//    }
 
     @RequestMapping(value = "/")
     public ModelAndView index(ModelAndView mv){
         log.info("MainPage");
         mv.setViewName("index");
 
-        physicalInfoExplorer.update();
+//        physicalInfoExplorer.update();
 
         return mv;
     }
