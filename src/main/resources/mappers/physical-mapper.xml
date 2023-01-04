@@ -23,4 +23,8 @@
                 #{svcOpnEnDdt})
     </insert>
 
+    <delete id="deleteDb">
+        TRUNCATE TABLE PHYSICAL_FACILITY
+    </delete>
+
 </mapper>

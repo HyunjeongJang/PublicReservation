@@ -53,6 +53,4 @@ public class CultureController {
 
         log.info("파싱 정보 입력 끝");
     }
-
-
 }
