@@ -61,6 +61,7 @@ public class PhysicalInfoExplorer {
     private void parseXml(Element root, List<Map<String, String>> list) {
 //        NodeList nList = root.getElementsByTagName("row").item(0).getChildNodes();
             NodeList nList = root.getElementsByTagName("row");
+        System.out.println(nList.getLength());
         for (int i = 0; i < nList.getLength(); i++) {
             Map<String, String> map = new HashMap<>();
             Node nNode = nList.item(i);
