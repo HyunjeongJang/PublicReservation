@@ -11,4 +11,5 @@ public interface CultureService {
     void insertInfo(GovDataDTO govDataDTO) throws IOException, ParserConfigurationException, SAXException;
 
     List<GovDataDTO> cultureList();
+    int retrieveAndSave();
 }
