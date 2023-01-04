@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 public class KakaoOAuthAttribute {
 	private long id;
 	private KakaoOAuthProperties properties;
-	private KakaoOAuthAccount kakaoAccount;
+	private String email;
 
 	public OAuthUser toOAuth2User() {
-		return new OAuthUser("KAKAO", id, properties.getNickname(), kakaoAccount.getEmail(), properties.getProfileImage());
+		return new OAuthUser("KAKAO", id, properties.getNickname(), email, properties.getProfileImage());
 	}
 }
 

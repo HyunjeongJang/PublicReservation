@@ -10,6 +10,7 @@
 
     <typeAliases>
         <typeAlias type="com.project.spring.user.entity.User" alias="user"/>
+        <typeAlias type="com.project.spring.facility.entity.CultureFacility" alias="cultureFacility" />
         <typeAlias type="com.project.spring.facility.dto.GovDataDTO" alias="physical"/>
     </typeAliases>
 
@@ -17,6 +18,7 @@
 <!--        <mapper resource="/mappers/user-mapper.xml"/>-->
         <mapper resource="/mappers/physical-mapper.xml"/>
         <mapper resource="/mappers/user-mapper.xml"/>
+        <mapper resource="/mappers/culture-mapper.xml"/>
         <mapper resource="/mappers/physical-mapper.xml"/>
     </mappers>
 

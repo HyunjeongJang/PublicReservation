@@ -54,7 +54,6 @@ public class KakaoAPI {
             userInfo.put("nickname", nickname);
             userInfo.put("email", email);
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }

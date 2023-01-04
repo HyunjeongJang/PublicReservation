@@ -4,18 +4,64 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cultureMapper">
 
-    <insert id="insertInfo">
+    <resultMap type="cultureFacility" id="cultureFacilityResultSet">
+        <result column="SVDID" property="serviceId" />
+        <result column="MINCLASSNM" property="minClassName" />
+        <result column="SVCSTATNM" property="serviceState" />
+        <result column="SVCNM" property="serviceName" />
+        <result column="PLACENM" property="placeName" />
+        <result column="X" property="x" />
+        <result column="Y" property="y" />
+        <result column="SVCOPNBGNDT" property="serviceOpenBeginDate" />
+        <result column="SVCOPNENDDT" property="serviceOpenEndDate" />
+        <result column="RCPTBGNDT" property="rcptBeginDate" />
+        <result column="RCPTENDDT" property="rcptEndDate" />
+        <result column="AREANM" property="areaName" />
+        <result column="TELNO" property="tel" />
+        <result column="REVSTDDAY" property="revStdDay" />
+        <result column="SVCURL" property="serviceUrl" />
+    </resultMap>
+
+    <delete id="deleteAll">
+        TRUNCATE TABLE CULTURAL_FACILITY
+    </delete>
+
+    <insert id="insert" parameterType="cultureFacility">
         INSERT INTO CULTURAL_FACILITY
-            (SVCID, MINCLASSNM , SVCSTATNM , SVCNM )
-        values (#{svcId}, #{minClassNm}, #{svcStatNm}, #{svcNm})
+            (CULTURAL_FACILITY_ID, SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+             RCPTBGNDT, RCPTENDDT, AREANM, TELNO, SVCURL, REVSTDDAY)
+        VALUES
+            (SEQ_CULTURAL.NEXTVAL, #{serviceId}, #{minClassName}, #{serviceState}, #{serviceName}, #{placeName}, #{x}, #{y},
+                #{serviceOpenBeginDate}, #{serviceOpenEndDate}, #{rcptBeginDate},#{rcptEndDate}, #{areaName}, #{tel},
+                #{serviceUrl}, #{revStdDay})
     </insert>
 
-
-    <select id="cultureList" resultType="GovDataDTO">
-        select *
-        from CULTURAL_FACILITY
-    </select>
-
-
-
+    <insert id="batchInsert" parameterType="list">
+        INSERT INTO CULTURAL_FACILITY
+            (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+            RCPTBGNDT, RCPTENDDT, AREANM, TELNO, SVCURL, REVSTDDAY)
+        SELECT culture.* FROM (
+            <foreach collection="list" item="c" separator="UNION ALL ">
+                <![CDATA[
+				    SELECT
+                        #{c.serviceId},
+                        #{c.minClassName},
+                        #{c.serviceState},
+                        #{c.serviceName},
+                        #{c.placeName},
+                        #{c.x},
+                        #{c.y},
+                        #{c.serviceOpenBeginDate},
+                        #{c.serviceOpenEndDate},
+                        #{c.rcptBeginDate},
+                        #{c.rcptEndDate},
+                        #{c.areaName},
+                        #{c.tel},
+                        #{c.serviceUrl},
+                        #{c.revStdDay}
+                    FROM dual
+                ]]>
+            </foreach>
+        ) culture
+    </insert>
 </mapper>
