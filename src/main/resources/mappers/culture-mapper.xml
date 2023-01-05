@@ -18,8 +18,8 @@
         <result column="RCPTENDDT" property="rcptEndDate" />
         <result column="AREANM" property="areaName" />
         <result column="TELNO" property="tel" />
+        <result column="IMGURL" property="imgUrl" />
         <result column="REVSTDDAY" property="revStdDay" />
-        <result column="SVCURL" property="serviceUrl" />
     </resultMap>
 
     <delete id="deleteAll">
@@ -29,17 +29,17 @@
     <insert id="insert" parameterType="cultureFacility">
         INSERT INTO CULTURAL_FACILITY
             (CULTURAL_FACILITY_ID, SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
-             RCPTBGNDT, RCPTENDDT, AREANM, TELNO, SVCURL, REVSTDDAY)
+             RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
         VALUES
             (SEQ_CULTURAL.NEXTVAL, #{serviceId}, #{minClassName}, #{serviceState}, #{serviceName}, #{placeName}, #{x}, #{y},
                 #{serviceOpenBeginDate}, #{serviceOpenEndDate}, #{rcptBeginDate},#{rcptEndDate}, #{areaName}, #{tel},
-                #{serviceUrl}, #{revStdDay})
+                #{imageURL}, #{revStdDay})
     </insert>
 
     <insert id="batchInsert" parameterType="list">
         INSERT INTO CULTURAL_FACILITY
             (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
-            RCPTBGNDT, RCPTENDDT, AREANM, TELNO, SVCURL, REVSTDDAY)
+            RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
         SELECT culture.* FROM (
             <foreach collection="list" item="c" separator="UNION ALL ">
                 <![CDATA[
@@ -57,11 +57,23 @@
                         #{c.rcptEndDate},
                         #{c.areaName},
                         #{c.tel},
-                        #{c.serviceUrl},
+                        #{c.imageUrl},
                         #{c.revStdDay}
                     FROM dual
                 ]]>
             </foreach>
         ) culture
     </insert>
+
+
+    <select id="selectCultureList" resultMap="cultureFacilityResultSet">
+        SELECT * FROM CULTURAL_FACILITY
+    </select>
+
+
+
+
+
+
+
 </mapper>

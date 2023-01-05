@@ -1,8 +1,5 @@
 package com.project.spring.facility.entity;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import com.project.spring.client.seoulapi.dto.ReservationCultureDto;
 
 import lombok.AllArgsConstructor;
@@ -16,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CultureFacility {
 
-	private long id; // 1, 2, 3, 4, 5, 6, 7,,,
 	private String serviceId; // SVC(PK)
 	private String minClassName;
 	private String serviceState;
@@ -30,7 +26,7 @@ public class CultureFacility {
 	private String rcptEndDate;
 	private String areaName;
 	private String tel;
-	private String serviceUrl;
+	private String imgUrl;
 	private String revStdDay;
 
 	// 팩토리 메소드 -> 객체 생성을 위한 메소드
@@ -53,7 +49,7 @@ public class CultureFacility {
 			.rcptEndDate(culture.getRcptEndDate())
 			.areaName(culture.getAreaName())
 			.tel(culture.getTel())
-			.serviceUrl(culture.getServiceUrl())
+			.imgUrl(culture.getImgUrl())
 			.revStdDay(culture.getRevStdDay())
 			.build();
 	}

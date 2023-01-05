@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
-
     <link rel="stylesheet" href="<c:url value="/resources/css/header.css"/>">
 
 </head>
@@ -64,7 +63,7 @@
             <%--                <li><a href="${contextPath}/facility/list/${facilityType.facilityCd}">${facilityType.fName}</a></li>--%>
             <%--            </c:forEach>--%>
             <li><a href="">체육시설</a> </li>
-            <li><a href="/showList">문화시설</a> </li>
+            <li><a href="${pageContext.request.contextPath}/selectCultureList">문화시설</a> </li>
             <li><a href="">예약확인</a></li>
         </ul>
     </div>

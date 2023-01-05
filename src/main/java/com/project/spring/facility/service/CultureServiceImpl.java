@@ -8,7 +8,10 @@ import com.project.spring.facility.repository.CultureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,14 +44,17 @@ public class CultureServiceImpl implements CultureService {
         return cultures.size();
     }
 
-    @Override
-    public void insertInfo(GovDataDTO govDataDTO) {
-        cultureRepository.insertInfo(govDataDTO);
-    }
+
+
+
 
     @Override
-    public List<GovDataDTO> cultureList() {
-        return cultureRepository.cultureList();
+    public List<CultureFacility> selectCulturelist() throws Exception {
+        return cultureRepository.selectCulturelist();
     }
+
+
+
+
 
 }

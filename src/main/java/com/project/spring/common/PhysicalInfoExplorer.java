@@ -93,7 +93,7 @@ public class PhysicalInfoExplorer {
 
         try {
             // URL 설정
-            String url = "http://openAPI.seoul.go.kr:8088/"+key+"/xml/ListPublicReservationSport/1/5/";
+            String url = "http://openAPI.seoul.go.kr:8088/"+key+"/xml/ListPublicReservationSport/1/1000";
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = null;
             dBuilder = dbFactory.newDocumentBuilder();

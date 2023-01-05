@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor  // 기본생성자
 @AllArgsConstructor  // 모든 인스턴스 변수를 받는 생성자
 @ToString
-public class ReservationCultureDto {
+public class ReservationCultureDto { // 서울 OpenAPI 에서 받아온 데이터 저장하기위한 client쪽 dto
 
 	@JsonProperty("SVCID")
 	private String serviceId;
@@ -44,7 +44,7 @@ public class ReservationCultureDto {
 	@JsonProperty("AREANM")
 	private String areaName;
 	@JsonProperty("IMGURL")
-	private String imageUrl;
+	private String imgUrl;
 	@JsonProperty("TELNO")
 	private String tel;
 	@JsonProperty("V_MIN")
