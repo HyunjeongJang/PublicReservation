@@ -62,7 +62,7 @@
             <%--            <c:forEach items="${facilityTypeList}" var="facilityType">--%>
             <%--                <li><a href="${contextPath}/facility/list/${facilityType.facilityCd}">${facilityType.fName}</a></li>--%>
             <%--            </c:forEach>--%>
-            <li><a href="">체육시설</a> </li>
+            <li><a href="${pageContext.request.contextPath}/selectPhysicalList">체육시설</a> </li>
             <li><a href="${pageContext.request.contextPath}/selectCultureList">문화시설</a> </li>
             <li><a href="">예약확인</a></li>
         </ul>

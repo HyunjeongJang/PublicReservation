@@ -1,6 +1,7 @@
 package com.project.spring.facility.service;
 
 
+import com.project.spring.facility.dto.GovDataDTO;
 import com.project.spring.facility.repository.PhysicalRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
@@ -21,5 +22,10 @@ public class PhysicalServiceImpl implements PhysicalService{
     @Override
     public int PhysicalDB(List<Map<String, String>> list) {
         return physicalRepository.PhysicalDB(sqlSession,list);
+    }
+
+    @Override
+    public List<GovDataDTO> selectPhysicalList() {
+        return physicalRepository.selectPhysicalList(sqlSession);
     }
 }

@@ -26,15 +26,6 @@
         TRUNCATE TABLE CULTURAL_FACILITY
     </delete>
 
-    <insert id="insert" parameterType="cultureFacility">
-        INSERT INTO CULTURAL_FACILITY
-            (CULTURAL_FACILITY_ID, SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
-             RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
-        VALUES
-            (SEQ_CULTURAL.NEXTVAL, #{serviceId}, #{minClassName}, #{serviceState}, #{serviceName}, #{placeName}, #{x}, #{y},
-                #{serviceOpenBeginDate}, #{serviceOpenEndDate}, #{rcptBeginDate},#{rcptEndDate}, #{areaName}, #{tel},
-                #{imageURL}, #{revStdDay})
-    </insert>
 
     <insert id="batchInsert" parameterType="list">
         INSERT INTO CULTURAL_FACILITY

@@ -67,19 +67,19 @@ public class PhysicalInfoExplorer {
             Node nNode = nList.item(i);
             Element eElement = (Element) nNode;
 
-            map.put("svcid", getTagValue("SVCID", eElement)); // 과정코드
-            map.put("minClassNm", getTagValue("MINCLASSNM", eElement)); // 과정명
-            map.put("svcStatNm", getTagValue("SVCSTATNM", eElement)); // 학원코드
-            map.put("svcNm", getTagValue("SVCNM", eElement)); // 학원명
-            map.put("placeNm", getTagValue("PLACENM", eElement)); // 학원 전화번호
-            map.put("x", getTagValue("X", eElement)); // 훈련시작일자
-            map.put("y", getTagValue("Y", eElement)); // 훈련종료일자
-            map.put("rcptBgnDt", getTagValue("RCPTBGNDT", eElement)); // 훈련대상
-            map.put("rcptEndDt", getTagValue("RCPTENDDT", eElement)); // 정원
-            map.put("areaNm", getTagValue("AREANM", eElement)); // 수강비
-            map.put("telNo", getTagValue("TELNO", eElement)); // 실제 수강비
-            map.put("revStdDay", getTagValue("REVSTDDAYNM", eElement)); // 회차
-            map.put("svcUrl", getTagValue("REVSTDDAY", eElement)); // 회차
+            map.put("svcid", getTagValue("SVCID", eElement));
+            map.put("minClassNm", getTagValue("MINCLASSNM", eElement));
+            map.put("svcStatNm", getTagValue("SVCSTATNM", eElement));
+            map.put("svcNm", getTagValue("SVCNM", eElement));
+            map.put("placeNm", getTagValue("PLACENM", eElement));
+            map.put("x", getTagValue("X", eElement));
+            map.put("y", getTagValue("Y", eElement));
+            map.put("rcptBgnDt", getTagValue("RCPTBGNDT", eElement));
+            map.put("rcptEndDt", getTagValue("RCPTENDDT", eElement));
+            map.put("areaNm", getTagValue("AREANM", eElement));
+            map.put("telNo", getTagValue("TELNO", eElement));
+            map.put("revStdDay", getTagValue("REVSTDDAY", eElement));
+            map.put("imgUrl", getTagValue("IMGURL", eElement));
             map.put("svcOpnBgnDt",getTagValue("SVCOPNBGNDT",eElement));
             map.put("svcOpnEnDdt",getTagValue("SVCOPNENDDT",eElement));
 //            System.out.println(map);

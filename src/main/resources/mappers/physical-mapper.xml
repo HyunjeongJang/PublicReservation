@@ -4,6 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="physicalMapper">
 
+    <resultMap id="PhysicalFacility" type="physical">
+        <result column="SVDID" property="svcId" />
+        <result column="MINCLASSNM" property="minClassNm" />
+        <result column="SVCSTATNM" property="svcStatNm" />
+        <result column="SVCNM" property="svcNm" />
+        <result column="PLACENM" property="placeNm" />
+        <result column="X" property="x" />
+        <result column="Y" property="y" />
+        <result column="SVCOPNBGNDT" property="svcOpnBgnDt" />
+        <result column="SVCOPNENDDT" property="svcOpnEnDdt" />
+        <result column="RCPTBGNDT" property="rcptBgnDt" />
+        <result column="RCPTENDDT" property="rcptEndDt" />
+        <result column="AREANM" property="areaNm" />
+        <result column="TELNO" property="telNo" />
+        <result column="IMGURL" property="imgUrl" />
+        <result column="REVSTDDAY" property="revStdDay" />
+    </resultMap>
+
+
+
     <insert id="PhysicalDB">
         INSERT INTO PHYSICAL_FACILITY
         VALUES (#{svcid},
@@ -13,18 +33,24 @@
                 #{placeNm},
                 #{x},
                 #{y},
+                #{svcOpnBgnDt},
+                #{svcOpnEnDdt},
                 #{rcptBgnDt},
                 #{rcptEndDt},
                 #{areaNm},
                 #{telNo},
-                #{revStdDay},
-                #{svcUrl},
-                #{svcOpnBgnDt},
-                #{svcOpnEnDdt})
+                #{imgUrl},
+                #{revStdDay})
     </insert>
 
     <delete id="deleteDb">
         TRUNCATE TABLE PHYSICAL_FACILITY
     </delete>
+
+    <select id="selectPhysicalList" resultMap="PhysicalFacility">
+        SELECT*
+        FROM PHYSICAL_FACILITY
+    </select>
+
 
 </mapper>

@@ -17,7 +17,7 @@ public class GovDataDTO {
     private String areaNm;
     private String telNo;
     private String revStdDay;
-    private String svcUrl;
+    private String imgUrl;
     private String svcOpnBgnDt;
     private String svcOpnEnDdt;
 }
