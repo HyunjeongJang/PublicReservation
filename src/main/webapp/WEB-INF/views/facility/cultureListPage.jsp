@@ -70,14 +70,12 @@
 
     </style>
 
-
-
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <br><br>
 <div align="center">
-    <a href="/selectCultureList">데이터 가져오기</a>
+    <a href="/insertCultureList">데이터 가져오기</a>
 </div>
 
 
@@ -114,25 +112,51 @@
 </div>
 
 
+
+<!-- 페이지 이동기능 구현 -->
+<div id="pagingArea">
+    <ul class="pagination">
+        <c:choose>
+            <c:when test="${ pi.currentPage eq 1 }">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            </c:when>
+            <c:otherwise>
+                <li class="page-item"><a class="page-link" href="selectCultureList?cpage=${pi.currentPage -1 }">Previous</a></li>
+            </c:otherwise>
+        </c:choose>
+
+        <c:forEach var="item" begin="${pi.startPage }" end="${pi.endPage }">
+            <li class="page-item"><a class="page-link" href="selectCultureList?cpage=${item }">${item }</a></li>
+        </c:forEach>
+
+        <c:choose>
+            <c:when test="${ pi.currentPage eq pi.maxPage }">
+                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+            </c:when>
+            <c:otherwise>
+                <li class="page-item"><a class="page-link" href="selectCultureList?cpage=${pi.currentPage + 1}">Next</a></li>
+            </c:otherwise>
+        </c:choose>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
 
-<!--
-    게시글 클릭했을때 게시글 상세보기화면으로 이동하는 스크립트 구현.
- -->
-<script>
-    function movePage(bno) {
-        location.href = '${contextPath}/board/detail/${boardCode}/' + bno;
-    }
-
-    // 			 	$(function(){
-    // 			 		$("#boardList>table>tbody tr").on('click', function(){
-    // 			 			let bno = $(this).children().eq(0).text();
-    // 			 			location.href = '${contextPath}/board/detail.bo?bno='+bno;
-    // 			 		});
-    // 			 	})
-
-</script>
 
 
 

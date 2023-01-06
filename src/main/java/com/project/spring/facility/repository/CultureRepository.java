@@ -1,24 +1,37 @@
 package com.project.spring.facility.repository;
 
-import com.project.spring.facility.dto.GovDataDTO;
+import com.project.spring.common.PageInfo;
+import com.project.spring.facility.dto.SearchRequest;
+import com.project.spring.facility.dto.SearchResponse;
 import com.project.spring.facility.entity.CultureFacility;
 
-import org.springframework.stereotype.Repository;
+import com.project.spring.facility.entity.SearchType;
+import org.apache.ibatis.session.SqlSession;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public interface CultureRepository {
-//    void insertInfo(GovDataDTO govDataDTO);
-//
-//    List<GovDataDTO> cultureList();
+
+
 
     void truncate();
 
     void batchInsert(List<CultureFacility> cultures);
 
-    public List<CultureFacility> selectCulturelist() throws Exception;
+    List<CultureFacility> selectCulturelist() throws Exception;
+
+
+    int selectListCount();
+
+    ArrayList<CultureFacility> selectList(PageInfo pi);
+
+
+
+
+
+
 
 
 

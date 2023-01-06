@@ -20,7 +20,7 @@ public class PhysicalController {
         this.physicalInfoExplorer = physicalInfoExplorer;
     }
 
-    @GetMapping("/searchPhysicalList")
+    @GetMapping("/insertPhysicalList")
     public void searchPhysicalInfo(Model model) throws ParserConfigurationException, SAXException, IOException {
 
         log.info("체육시설 파싱 스타트 체크");

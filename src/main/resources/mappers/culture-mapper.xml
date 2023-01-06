@@ -28,7 +28,7 @@
 
     <insert id="insert" parameterType="cultureFacility">
         INSERT INTO CULTURAL_FACILITY
-            (CULTURAL_FACILITY_ID, SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+            (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
              RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
         VALUES
             (SEQ_CULTURAL.NEXTVAL, #{serviceId}, #{minClassName}, #{serviceState}, #{serviceName}, #{placeName}, #{x}, #{y},
@@ -69,6 +69,23 @@
     <select id="selectCultureList" resultMap="cultureFacilityResultSet">
         SELECT * FROM CULTURAL_FACILITY
     </select>
+
+
+
+    <select id="selectListCount" resultType="int">
+        SELECT COUNT(*)
+        FROM CULTURAL_FACILITY
+    </select>
+
+
+    <select id="selectList" resultMap="cultureFacilityResultSet">
+        SELECT
+            SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+             RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY
+        FROM CULTURAL_FACILITY
+    </select>
+
+
 
 
 
