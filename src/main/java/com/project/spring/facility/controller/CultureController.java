@@ -1,7 +1,13 @@
 package com.project.spring.facility.controller;
 
 import com.project.spring.client.seoulapi.SeoulApiClient;
+import com.project.spring.common.PageInfo;
 import com.project.spring.common.Pagination;
+import com.project.spring.facility.dto.SearchRequest;
+import com.project.spring.facility.dto.SearchResponse;
+import com.project.spring.facility.entity.CultureFacility;
+import com.project.spring.facility.entity.SearchType;
+import com.project.spring.facility.repository.CultureRepository;
 import com.project.spring.facility.service.CultureService;
 
 import lombok.RequiredArgsConstructor;
@@ -16,9 +22,10 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller
-@RequiredArgsConstructor
+@RequiredArgsConstructor // final이 붙은 멤버변수만 만사용해서 생성자를 자동으로 만들어줌
 @Log4j
 public class CultureController {
 
@@ -26,31 +33,39 @@ public class CultureController {
     private final SeoulApiClient seoulApiClient;
 
 
+    private final Pagination pagination;
 
 
+    /**
+     * 문화시설 데이터 가져오기
+     */
+    @GetMapping("/searchCultureList")
+    public void searchInfo(Model model) throws ParserConfigurationException, SAXException, IOException {
+
+        log.info("문화시설 파싱 스타트 체크");
+        int result = cultureService.retrieveAndSave();
+        System.out.println(result);
+
+        log.info("문화시설 파싱 정보 입력 끝");
+    }
 
 
-    private Pagination pagination;
-
-
+    /**
+     * 문화시설 리스트 - 페이징
+     */
     @RequestMapping("/selectCultureList")
-    public String selectCulturelist(
-//            @RequestParam(value = "cpage", defaultValue = "1") int currentPage,
-//            @RequestParam(value = "s_type", defaultValue = "TITLE") String type,
-//            @RequestParam(value = "s_content", defaultValue = "") String sContent,
-            Model model
-    ) throws Exception {
+    public String selectCulturelist(@RequestParam(value = "cpage", defaultValue = "1") int currentPage, Model model) throws Exception {
 
-//        SearchType sType = SearchType.valueOf(type.toUpperCase());
-//        CultureSearchRequest req = new CultureSearchRequest(currentPage, sType, sContent);
-//        CultureSearchResponse resp = cultureService.search(req);
-//
-//        model.addAttribute("list", resp.getCultureList());
-//        model.addAttribute("pi", resp.getPageInfo());
-//        model.addAttribute("s_type", sType.name());
-//        model.addAttribute("s_content", sContent);
+        int listCount = cultureService.selectListCount();
 
-        model.addAttribute("selectCultureList", cultureService.selectCulturelist());
+        int pageLimit = 10;
+        int boardLimit = 12;
+        PageInfo pi = pagination.getPageInfo(listCount, currentPage, pageLimit, boardLimit);
+
+        ArrayList<CultureFacility> selectCultureList = cultureService.selectList(pi);
+
+        model.addAttribute("selectCultureList", selectCultureList);
+        model.addAttribute("pi", pi);
 
         return "facility/cultureListPage";
     }
@@ -62,38 +77,4 @@ public class CultureController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //검색시 데이터가 없으면 db에 추가하도록 처리
-    @GetMapping("/searchCultureList")
-    public void searchInfo(Model model) throws ParserConfigurationException, SAXException, IOException {
-
-        log.info("문화시설 파싱 스타트 체크");
-
-        int result = cultureService.retrieveAndSave();
-        System.out.println(result);
-
-        log.info("문화시설 파싱 정보 입력 끝");
-    }
 }
