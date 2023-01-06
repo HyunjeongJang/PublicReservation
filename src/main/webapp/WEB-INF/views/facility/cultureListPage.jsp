@@ -95,7 +95,6 @@
                         <c:out value="${selectCultureList.minClassName}"/> <br>
                         <c:out value="${selectCultureList.serviceName}"/>
                     </td>
-<%--                    <td><c:out value="${selectCultureList.minClassName}"/></td>--%>
                     <c:if test="${i%j == j-1}">
                         </tr>
                     </c:if>

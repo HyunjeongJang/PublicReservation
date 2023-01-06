@@ -1,0 +1,144 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: apple
+  Date: 2023/01/06
+  Time: 4:41 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+    <style>
+        table * {margin:5px}
+        table {width: 100%}
+    </style>
+</head>
+<body>
+<jsp:include page="../common/header.jsp"/>
+
+<div class="contents">
+    <br><br>
+    <div class="innerOuter">
+        <h2>게시글 상세보기</h2>
+        <br>
+        <a class="btn btn-secondary" style="float: right;" href="list">목록으로</a>
+        <br><br>
+        <table id="contentArea" align="center" class="table">
+            <tr>
+                <th width="100">제목</th>
+                <td colspan="3">${b.boardTitle}</td>
+            </tr>
+            <tr>
+                <th>첨부파일</th>
+                <td colspan="3">
+                    <a href="${contextPath}/${b.changeName}" download="${b.originName}">${b.originName}</a>
+                </td>
+            </tr>
+
+            <c:if test="${!empty b.imgList }">
+                <c:forEach var="i" begin="0" end="${fn:length(b.imgList) -1 }">
+                    <tr>
+                        <th>이미지${i+1}</th>
+                        <td colspan="3">
+                            <img src="${contextPath}/resources/images/boardT/${b.imgList[i].changeName}" >
+                            <a href="${contextPath}/resources/images/boardT/${b.imgList[i].changeName}"
+                               download="${b.imgList[i].originName}">다운로드</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </c:if>
+
+            <tr>
+                <th>내용</th>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td colspan="4"><p style="height: 150px;">${b.boardContent}</p></td>
+            </tr>
+        </table>
+        <br>
+<%--        <div align="center">--%>
+<%--            <!-- 수정하기, 삭제하기 버튼은 이 글이 본인이 작성한 글일경우에만 보여져야한다.-->--%>
+<%--            <a class="btn btn-primary" href="${contextPath}/board/enrollForm/${boardCode}?mode=update&bno=${b.boardNo}">수정하기</a>--%>
+<%--            <a class="btn btn-danger" href="${contextPath}/board/deleteBoard.bo?bno=${b.boardNo}">삭제하기</a>--%>
+<%--        </div>--%>
+<%--        <br><br>--%>
+        <!-- 댓글 등록 기능 -->
+<%--        <table id="replyArea" class="table" align="center">--%>
+<%--            <thead>--%>
+<%--            <tr>--%>
+<%--                <th colspan="2">--%>
+<%--                    <textarea class="form-control" name="" id="content" rows="2" cols="55" style="resize: none; width: 100%"></textarea>--%>
+<%--                </th>--%>
+<%--                <th style="vertical-align: middle;"><button class="btn btn-secondary" onclick="insertReply();">등록하기</button></th>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td colspan="3">댓글(<span id="rCount"></span>)</td>--%>
+<%--            </tr>--%>
+<%--            </thead>--%>
+<%--            <tbody>--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
+    </div>
+</div>
+
+
+<script>
+    $(function (){
+        selectReplyList();
+    })
+
+    function selectReplyList(){
+        $.ajax({
+            url : "reply.bo",
+            //url : '${pageContext.request.contextPath}/board/reply.bo',
+            data : {bno : ${b.boardNo} },
+            dataType : "json",
+            success : function(list) {
+                console.log(list);
+                let str = "";
+                for(let i of list){
+                    str += "<tr>"
+                        + "<td>" + i.replyWriter + "</td>"
+                        + "<td>" + i.replyContent + "</td>"
+                        + "<td>" + i.createDate + "</td>"
+                        + "</tr>";
+                }
+                $("#replyArea tbody").html(str);
+                $("#rCount").html(list.length);
+            },
+            error : function(){
+                console.log("댓글리스트조회 ajax통신 실패");
+            }
+        });
+    }
+
+
+    function insertReply(){
+        $.ajax({
+            url:"insertReply.bo",
+            data:{
+                replyContent : $("#content").val(),
+                refBno : ${b.boardNo}
+            },
+            success : (result) => {
+                if(result > 0){
+                    selectReplyList();
+                    $("#content").val("");
+                }
+            },
+            error : function (){
+                console.log("댓글 작성 ajax통신 실패");
+            }
+        });
+    }
+
+
+
+</script>
+
+</body>
+</html>

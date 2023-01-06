@@ -16,7 +16,7 @@ public interface CultureService {
     int retrieveAndSave();
 
 
-    public List<CultureFacility> selectCulturelist() throws Exception;
+//    public List<CultureFacility> selectCulturelist() throws Exception;
 
 
 

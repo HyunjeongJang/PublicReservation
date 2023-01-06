@@ -14,8 +14,6 @@ import java.util.List;
 
 public interface CultureRepository {
 
-
-
     void truncate();
 
     void batchInsert(List<CultureFacility> cultures);
