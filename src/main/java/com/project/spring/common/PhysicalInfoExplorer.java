@@ -74,14 +74,15 @@ public class PhysicalInfoExplorer {
             map.put("placeNm", getTagValue("PLACENM", eElement)); // 학원 전화번호
             map.put("x", getTagValue("X", eElement)); // 훈련시작일자
             map.put("y", getTagValue("Y", eElement)); // 훈련종료일자
+            map.put("svcOpnBgnDt",getTagValue("SVCOPNBGNDT",eElement));
+            map.put("svcOpnEnDdt",getTagValue("SVCOPNENDDT",eElement));
             map.put("rcptBgnDt", getTagValue("RCPTBGNDT", eElement)); // 훈련대상
             map.put("rcptEndDt", getTagValue("RCPTENDDT", eElement)); // 정원
             map.put("areaNm", getTagValue("AREANM", eElement)); // 수강비
             map.put("telNo", getTagValue("TELNO", eElement)); // 실제 수강비
-            map.put("revStdDay", getTagValue("REVSTDDAYNM", eElement)); // 회차
-            map.put("svcUrl", getTagValue("REVSTDDAY", eElement)); // 회차
-            map.put("svcOpnBgnDt",getTagValue("SVCOPNBGNDT",eElement));
-            map.put("svcOpnEnDdt",getTagValue("SVCOPNENDDT",eElement));
+            map.put("imgUrl", getTagValue("IMGURL", eElement)); // 회차
+            map.put("revStdDay", getTagValue("REVSTDDAY", eElement)); // 회차
+
 //            System.out.println(map);
             list.add(map);
         }

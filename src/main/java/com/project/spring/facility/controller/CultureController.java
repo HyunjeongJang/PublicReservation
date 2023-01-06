@@ -73,6 +73,34 @@ public class CultureController {
 
 
 
+    /**
+     * 문화시설 리스트
+     */
+//    @RequestMapping("/selectCultureList")
+//    public String selectCulturelist(
+//            @RequestParam(value = "cpage", defaultValue = "1") int currentPage,
+//            @RequestParam(value = "s_type", defaultValue = "TITLE") String type,
+//            @RequestParam(value = "s_content", defaultValue = "") String sContent,
+//            Model model) throws Exception {
+//
+//
+//        SearchType sType = SearchType.valueOf(type.toUpperCase());
+//        log.info("s_type : " + sType.name());
+//        log.info("s_content : " + sContent);
+//
+//        SearchRequest req = new SearchRequest(currentPage, sType, sContent);
+//        SearchResponse resp = cultureService.search(req);
+//
+//        model.addAttribute("cultureList", resp.getCultureList());
+//        model.addAttribute("pi", resp.getPageInfo());
+//        model.addAttribute("s_type", sType.name());
+//        model.addAttribute("s_content", sContent);
+//
+//
+//        return "facility/cultureListPage";
+//    }
+
+
 
 
 

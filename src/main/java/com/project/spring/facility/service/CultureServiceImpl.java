@@ -48,10 +48,10 @@ public class CultureServiceImpl implements CultureService {
 
 
 
-    @Override
-    public List<CultureFacility> selectCulturelist() throws Exception {
-        return cultureRepository.selectCulturelist();
-    }
+//    @Override
+//    public List<CultureFacility> selectCulturelist() throws Exception {
+//        return cultureRepository.selectCulturelist();
+//    }
 
 
 

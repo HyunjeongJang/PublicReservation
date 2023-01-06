@@ -13,14 +13,15 @@
                 #{placeNm},
                 #{x},
                 #{y},
+                #{svcOpnBgnDt},
+                #{svcOpnEnDdt},
                 #{rcptBgnDt},
                 #{rcptEndDt},
                 #{areaNm},
                 #{telNo},
-                #{revStdDay},
-                #{svcUrl},
-                #{svcOpnBgnDt},
-                #{svcOpnEnDdt})
+                #{imgUrl},
+                #{revStdDay}
+                )
     </insert>
 
     <delete id="deleteDb">
