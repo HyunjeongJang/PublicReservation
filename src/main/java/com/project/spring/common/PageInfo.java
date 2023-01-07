@@ -52,7 +52,7 @@ public class PageInfo {
         return this.boardLimit;
     }
 
-    public RowBounds generateRowBounds() {  // 외부에 공개되는 공용 인터페이스는 쉽게 바꿀 수 없다.
+    public RowBounds generateRowBounds() {
         return new RowBounds(getOffset(), getLimit());
     }
 

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.project.spring.facility.entity.CultureFacility;
 import com.project.spring.facility.repository.filter.CultureFacilityFilter;
-import com.project.spring.facility.type.AcceptStatus;
 
 import lombok.RequiredArgsConstructor;
 

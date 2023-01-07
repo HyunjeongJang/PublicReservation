@@ -1,7 +1,6 @@
 package com.project.spring.facility.controller;
 
 import com.project.spring.client.seoulapi.SeoulApiClient;
-import com.project.spring.common.PageInfo;
 import com.project.spring.facility.dto.CultureFacilityBoardRequest;
 import com.project.spring.facility.dto.CultureFacilityBoardResponse;
 import com.project.spring.facility.entity.CultureFacility;
@@ -20,7 +19,6 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
