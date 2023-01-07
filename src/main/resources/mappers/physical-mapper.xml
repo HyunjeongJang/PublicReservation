@@ -5,7 +5,7 @@
 <mapper namespace="physicalMapper">
 
     <resultMap id="PhysicalFacility" type="physical">
-        <result column="SVDID" property="svcId" />
+        <result column="SVCID" property="svcId" />
         <result column="MINCLASSNM" property="minClassNm" />
         <result column="SVCSTATNM" property="svcStatNm" />
         <result column="SVCNM" property="svcNm" />
@@ -21,6 +21,10 @@
         <result column="IMGURL" property="imgUrl" />
         <result column="REVSTDDAY" property="revStdDay" />
     </resultMap>
+
+    <select id="findAll" >
+        
+    </select>
 
 
 
@@ -47,9 +51,23 @@
         TRUNCATE TABLE PHYSICAL_FACILITY
     </delete>
 
-    <select id="selectPhysicalList" resultMap="PhysicalFacility">
+    <select id="PhysicalList" resultMap="PhysicalFacility">
         SELECT*
         FROM PHYSICAL_FACILITY
+    </select>
+
+    <select id="count" resultType="int" parameterType="searchDto">
+        SELECT COUNT(*)
+        FROM PHYSICAL_FACILITY
+    </select>
+
+
+
+    <select id="selectList" resultMap="PhysicalFacility" parameterType="searchDto">
+    SELECT
+    SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+    RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY
+    FROM PHYSICAL_FACILITY
     </select>
 
 

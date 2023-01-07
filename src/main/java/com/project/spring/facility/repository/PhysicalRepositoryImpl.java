@@ -1,5 +1,7 @@
 package com.project.spring.facility.repository;
+import com.project.spring.common.SearchDto;
 import com.project.spring.facility.dto.GovDataDTO;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +24,14 @@ public class PhysicalRepositoryImpl implements PhysicalRepository{
     }
 
     @Override
-    public List<GovDataDTO> selectPhysicalList(SqlSession sqlSession) {
-        return sqlSession.selectList("physicalMapper.selectPhysicalList");
+    public List<GovDataDTO> findAll(SqlSession sqlSession, SearchDto params) {
+        RowBounds rowBounds = new RowBounds(params.getPagination2().getLimitStart(),params.getRecordSize());
+
+        return sqlSession.selectList("physicalMapper.PhysicalList",null,rowBounds);
+    }
+
+    @Override
+    public int count(SqlSession sqlSession, SearchDto params) {
+        return sqlSession.selectOne("physicalMapper.count",params) ;
     }
 }
