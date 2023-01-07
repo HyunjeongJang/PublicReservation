@@ -12,6 +12,7 @@
         <typeAlias type="com.project.spring.user.entity.User" alias="user"/>
         <typeAlias type="com.project.spring.facility.entity.CultureFacility" alias="cultureFacility" />
         <typeAlias type="com.project.spring.facility.dto.GovDataDTO" alias="physical"/>
+        <typeAlias type="com.project.spring.common.SearchDto" alias="searchDto"/>
     </typeAliases>
 
     <mappers>

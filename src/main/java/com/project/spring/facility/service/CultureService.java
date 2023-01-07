@@ -9,13 +9,7 @@ import java.util.List;
 public interface CultureService {
 
 
-
     int retrieveAndSave();
-
-
-
-
-
 
     public int selectListCount();
 

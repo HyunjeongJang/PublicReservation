@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -53,21 +54,22 @@
 
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
 <div class="content">
     <c:set var="i" value="0"/>
     <c:set var="j" value="4"/>
     <table border=1>
         <c:choose>
-            <c:when test="${selectPhysicalList != null && fn:length(selectPhysicalList) > 0 }">
-                <c:forEach items="${selectPhysicalList}" var="selectPhysicalList">
+            <c:when test="${response.list != null && fn:length(response.list) > 0 }">
+                <c:forEach items="${response.list}" var="list">
                     <c:if test="{i%j == 0}">
                         <tr>
                     </c:if>
                     <td align="center">
-                        <img src="<c:out value="${selectPhysicalList.imgUrl}" />" width="250px" height="300px">
+                        <img src="<c:out value="${list.imgUrl}" />" width="250px" height="300px">
                         <hr>
-                        <c:out value="${selectPhysicalList.minClassNm}"/> <br>
-                        <c:out value="${selectPhysicalList.svcNm}"/>
+                        <c:out value="${list.minClassNm}"/> <br>
+                        <c:out value="${list.svcNm}"/>
                     </td>
                     <%--                    <td><c:out value="${selectCultureList.minClassName}"/></td>--%>
                     <c:if test="${i%j == j-1}">
@@ -83,26 +85,83 @@
             </c:otherwise>
         </c:choose>
     </table>
+    <!-- 페이징 처리 -->
+    <div class="paging">
+    </div>
+
 </div>
 
 
 </body>
 
-
-<!--
-    게시글 클릭했을때 게시글 상세보기화면으로 이동하는 스크립트 구현.
- -->
 <script>
-    function movePage(bno) {
-        location.href = '${contextPath}/board/detail/${boardCode}/' + bno;
+
+    window.onload = () =>{
+        findAllPost();
     }
 
-    // 			 	$(function(){
-    // 			 		$("#boardList>table>tbody tr").on('click', function(){
-    // 			 			let bno = $(this).children().eq(0).text();
-    // 			 			location.href = '${contextPath}/board/detail.bo?bno='+bno;
-    // 			 		});
-    // 			 	})
+    function findAllPost() {
+
+
+        const pagination = [[ ${response.pagination2} ]];
+        const params = [[ ${params} ]];
+
+        drawPage(pagination, params);
+    }
+
+    function drawPage(pagination, params) {
+
+        if ( !pagination || !params ) {
+            document.querySelector('.paging').innerHTML = '';
+            throw new Error('Missing required parameters...');
+        }
+
+        let html = '';
+
+        // 첫 페이지, 이전 페이지
+        if (pagination.existPrevPage) {
+            html += `
+            <a href="javascript:void(0);" onclick="movePage(1)" class="page_bt first">첫 페이지</a>
+            <a href="javascript:void(0);" onclick="movePage(${pagination.startPage - 1})" class="page_bt prev">이전 페이지</a>
+        `;
+        }
+
+        // 페이지 번호
+        html += '<p>';
+        for (let i = pagination.startPage; i <= pagination.endPage; i++) {
+            html += (i !== params.page)
+                ? `<a href="javascript:void(0);" onclick="movePage(${i});">${i}</a>`
+                : `<span class="on">${i}</span>`
+        }
+        html += '</p>';
+
+        // 다음 페이지, 마지막 페이지
+        if (pagination.existNextPage) {
+            html += `
+            <a href="javascript:void(0);" onclick="movePage(${pagination.endPage + 1});" class="page_bt next">다음 페이지</a>
+            <a href="javascript:void(0);" onclick="movePage(${pagination.totalPageCount});" class="page_bt last">마지막 페이지</a>
+        `;
+        }
+
+        document.querySelector('.paging').innerHTML = html;
+    }
+
+
+
+
+
+
+
+    <%--function movePage(bno) {--%>
+    <%--    location.href = '${contextPath}/board/detail/${boardCode}/' + bno;--%>
+    <%--}--%>
+
+    <%--// 			 	$(function(){--%>
+    <%--// 			 		$("#boardList>table>tbody tr").on('click', function(){--%>
+    <%--// 			 			let bno = $(this).children().eq(0).text();--%>
+    <%--// 			 			location.href = '${contextPath}/board/detail.bo?bno='+bno;--%>
+    <%--// 			 		});--%>
+    <%--// 			 	})--%>
 </script>
 </body>
 </html>
