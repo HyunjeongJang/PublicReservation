@@ -14,7 +14,7 @@ import lombok.ToString;
 public class ReservationCultureDto { // OpenAPI 에서 받아온 데이터 저장하기위한 client쪽 dto
 
 	@JsonProperty("SVCID")
-	private String serviceId;
+	private String svcId;
 	@JsonProperty("MAXCLASSNM")
 	private String maxClassName;  // ObjectMapper
 	@JsonProperty("MINCLASSNM")

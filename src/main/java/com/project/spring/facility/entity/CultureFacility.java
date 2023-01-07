@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CultureFacility {
 
-	private String serviceId; // SVC(PK)
+	private String svcId; // SVC(PK)
 	private String minClassName;
 	private String serviceState;
 	private String serviceName;
@@ -36,7 +36,7 @@ public class CultureFacility {
 		// LocalDateTime time = LocalDateTime.parse(~~~~, formatter);
 
 		return CultureFacility.builder()
-			.serviceId(culture.getServiceId())
+			.svcId(culture.getSvcId())
 			.minClassName(culture.getMinClassName())
 			.serviceState(culture.getServiceState())
 			.serviceName(culture.getServiceName())

@@ -14,7 +14,7 @@ public class MainController {
     public ModelAndView index(ModelAndView mv){
         log.info("MainPage");
         mv.setViewName("index");
-        mv.addObject("content", "이런 문제였다니");
+//        mv.addObject("content", "이런 문제였다니");
 
         return mv;
     }

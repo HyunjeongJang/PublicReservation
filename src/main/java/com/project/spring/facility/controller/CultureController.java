@@ -28,7 +28,6 @@ public class CultureController {
     private final CultureService cultureService;
     private final SeoulApiClient seoulApiClient;
 
-
     private final Pagination pagination;
 
 
@@ -78,8 +77,7 @@ public class CultureController {
 //            @RequestParam(value = "s_type", defaultValue = "TITLE") String type,
 //            @RequestParam(value = "s_content", defaultValue = "") String sContent,
 //            Model model) throws Exception {
-//
-//
+
 //        SearchType sType = SearchType.valueOf(type.toUpperCase());
 //        log.info("s_type : " + sType.name());
 //        log.info("s_content : " + sContent);
@@ -91,10 +89,34 @@ public class CultureController {
 //        model.addAttribute("pi", resp.getPageInfo());
 //        model.addAttribute("s_type", sType.name());
 //        model.addAttribute("s_content", sContent);
-//
-//
 //        return "facility/cultureListPage";
 //    }
+
+
+//    @RequestMapping("/cultureDetail")
+//    public void cultureDetail(@RequestParam("svcId") String svcId, Model model) {
+//
+//        CultureFacility cultureFacility = cultureService.cultureDetail(svcId);
+//
+//        model.addAttribute("cultureDetail", cultureFacility);
+//    }
+
+
+    @RequestMapping("/cultureDetail")
+    public String cultureDetail(@RequestParam("svcId") String svcId, Model model) {
+        CultureFacility cultureFacility = cultureService.cultureDetail(svcId);
+        model.addAttribute("cultureDetail", cultureFacility);
+
+        return "facility/cultureDetailPage";
+    }
+
+
+
+
+
+
+
+
 
 
 

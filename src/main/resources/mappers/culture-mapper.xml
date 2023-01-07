@@ -5,7 +5,7 @@
 <mapper namespace="cultureMapper">
 
     <resultMap type="cultureFacility" id="cultureFacilityResultSet">
-        <result column="SVDID" property="serviceId" />
+        <result column="SVCID" property="svcId" />
         <result column="MINCLASSNM" property="minClassName" />
         <result column="SVCSTATNM" property="serviceState" />
         <result column="SVCNM" property="serviceName" />
@@ -31,7 +31,7 @@
             (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
              RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
         VALUES
-            (SEQ_CULTURAL.NEXTVAL, #{serviceId}, #{minClassName}, #{serviceState}, #{serviceName}, #{placeName}, #{x}, #{y},
+            (SEQ_CULTURAL.NEXTVAL, #{svcId}, #{minClassName}, #{serviceState}, #{serviceName}, #{placeName}, #{x}, #{y},
                 #{serviceOpenBeginDate}, #{serviceOpenEndDate}, #{rcptBeginDate},#{rcptEndDate}, #{areaName}, #{tel},
                 #{imageURL}, #{revStdDay})
     </insert>
@@ -44,7 +44,7 @@
             <foreach collection="list" item="c" separator="UNION ALL ">
                 <![CDATA[
 				    SELECT
-                        #{c.serviceId},
+                        #{c.svcId},
                         #{c.minClassName},
                         #{c.serviceState},
                         #{c.serviceName},
@@ -83,6 +83,12 @@
             SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
              RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY
         FROM CULTURAL_FACILITY
+    </select>
+
+    <select id="selectDetail" resultMap="cultureFacilityResultSet">
+        SELECT *
+        FROM CULTURAL_FACILITY
+        WHERE SVCID = #{svcId}
     </select>
 
 

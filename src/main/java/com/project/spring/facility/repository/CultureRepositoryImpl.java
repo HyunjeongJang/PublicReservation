@@ -62,6 +62,11 @@ public class CultureRepositoryImpl implements CultureRepository {
 
 
 
+	public CultureFacility cultureDetail(String svcId) {
+		return sqlSession.selectOne("cultureMapper.selectDetail", svcId);
+	}
+
+
 
 
 

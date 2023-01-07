@@ -68,6 +68,10 @@ public class CultureServiceImpl implements CultureService {
 
 
 
+    @Override
+    public CultureFacility cultureDetail(String svcId) {
+        return cultureRepository.cultureDetail(svcId);
+    }
 
 
 

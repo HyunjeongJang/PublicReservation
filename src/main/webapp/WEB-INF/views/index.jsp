@@ -9,20 +9,25 @@
 
 <jsp:include page="common/header.jsp" />
 
+<br>
 
-<%--<c:forEach items="${cultureList}" var="culture">--%>
-<%--    <tr>--%>
-<%--        <td>--%>
-<%--            <c:out value="${culture.svcid}"/>--%>
-<%--        </td>--%>
-<%--        <td>--%>
-<%--            <c:out value="${culture.minClassNm}"/>--%>
-<%--        </td>--%>
-<%--    </tr>--%>
-<%--</c:forEach>--%>
+<h2 style="text-align: center">추천서비스</h2>
 
-<br><br>
-<h2>${content}</h2>
+<%--<div align="center">--%>
+<%--    <div>--%>
+<%--        <input type="text" placeholder="검색어를 입력해주세요.">--%>
+<%--        <button>검색</button>--%>
+<%--    </div>--%>
+
+<%--    <br><br><br>--%>
+
+<%--    <div>--%>
+<%--        <select><option>지역</option></select>--%>
+<%--        <select><option>선택</option></select>--%>
+<%--        <select><option>선택</option></select>--%>
+<%--    </div>--%>
+<%--</div>--%>
+
 
 
 </body>
