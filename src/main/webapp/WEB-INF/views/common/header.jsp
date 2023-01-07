@@ -56,7 +56,7 @@
     <div id="header_2">
         <ul>
             <li><a href="<c:url value="/"/>">HOME</a></li>
-            <li><a href="">체육시설</a> </li>
+            <li><a href="${pageContext.request.contextPath}/selectPhysicalList">체육시설</a> </li>
             <li><a href="${pageContext.request.contextPath}/selectCultureList">문화시설</a> </li>
             <li><a href="">예약확인</a></li>
         </ul>
