@@ -1,4 +1,5 @@
 package com.project.spring.facility.repository;
+import com.project.spring.facility.dto.GovDataDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,10 @@ public class PhysicalRepositoryImpl implements PhysicalRepository{
             result++;
         }
         return result;
+    }
+
+    @Override
+    public List<GovDataDTO> selectPhysicalList(SqlSession sqlSession) {
+        return sqlSession.selectList("physicalMapper.selectPhysicalList");
     }
 }
