@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>상세페이지</title>
     <style>
         table * {margin:5px}
         table {width: 100%}
@@ -20,52 +20,39 @@
 <jsp:include page="../common/header.jsp"/>
 
 <div class="contents">
-    <br><br>
+    <br>
     <div class="innerOuter">
-        <h2>게시글 상세보기</h2>
+        <h2>${cultureDetail.serviceName}</h2>
         <br>
-        <a class="btn btn-secondary" style="float: right;" href="list">목록으로</a>
+        <a class="btn btn-secondary" style="float: right;" href="${pageContext.request.contextPath}/selectCultureList">목록으로</a>
         <br><br>
-        <table id="contentArea" align="center" class="table">
+        <table id="contentArea" class="table" border="1">
             <tr>
-                <th width="100">제목</th>
-                <td colspan="3">${b.boardTitle}</td>
-            </tr>
-            <tr>
-                <th>첨부파일</th>
-                <td colspan="3">
-                    <a href="${contextPath}/${b.changeName}" download="${b.originName}">${b.originName}</a>
-                </td>
+                <th colspan="2" style="align-content: center">${cultureDetail.placeName}</th>
             </tr>
 
-            <c:if test="${!empty b.imgList }">
-                <c:forEach var="i" begin="0" end="${fn:length(b.imgList) -1 }">
-                    <tr>
-                        <th>이미지${i+1}</th>
-                        <td colspan="3">
-                            <img src="${contextPath}/resources/images/boardT/${b.imgList[i].changeName}" >
-                            <a href="${contextPath}/resources/images/boardT/${b.imgList[i].changeName}"
-                               download="${b.imgList[i].originName}">다운로드</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </c:if>
-
             <tr>
-                <th>내용</th>
-                <td colspan="3"></td>
+                <td> ${cultureDetail.placeName} </td>
+                <td rowspan="4"><img src="<c:out value="${cultureDetail.imgUrl}" />" width="400"></td>
             </tr>
             <tr>
-                <td colspan="4"><p style="height: 150px;">${b.boardContent}</p></td>
+                <td> ${cultureDetail.svcId} </td>
+            </tr>
+            <tr>
+                <td> ${cultureDetail.areaName} </td>
+            </tr>
+            <tr>
+                <td> ${cultureDetail.serviceState} </td>
+            </tr>
+            <tr>
+                <th colspan="4">예약하기</th>
+            </tr>
+            <tr>
+                <td colspan="4"><p style="height: 150px;">예약정보</p></td>
             </tr>
         </table>
         <br>
-<%--        <div align="center">--%>
-<%--            <!-- 수정하기, 삭제하기 버튼은 이 글이 본인이 작성한 글일경우에만 보여져야한다.-->--%>
-<%--            <a class="btn btn-primary" href="${contextPath}/board/enrollForm/${boardCode}?mode=update&bno=${b.boardNo}">수정하기</a>--%>
-<%--            <a class="btn btn-danger" href="${contextPath}/board/deleteBoard.bo?bno=${b.boardNo}">삭제하기</a>--%>
-<%--        </div>--%>
-<%--        <br><br>--%>
+
         <!-- 댓글 등록 기능 -->
 <%--        <table id="replyArea" class="table" align="center">--%>
 <%--            <thead>--%>
@@ -87,54 +74,54 @@
 
 
 <script>
-    $(function (){
-        selectReplyList();
-    })
+    <%--$(function (){--%>
+    <%--    selectReplyList();--%>
+    <%--})--%>
 
-    function selectReplyList(){
-        $.ajax({
-            url : "reply.bo",
-            //url : '${pageContext.request.contextPath}/board/reply.bo',
-            data : {bno : ${b.boardNo} },
-            dataType : "json",
-            success : function(list) {
-                console.log(list);
-                let str = "";
-                for(let i of list){
-                    str += "<tr>"
-                        + "<td>" + i.replyWriter + "</td>"
-                        + "<td>" + i.replyContent + "</td>"
-                        + "<td>" + i.createDate + "</td>"
-                        + "</tr>";
-                }
-                $("#replyArea tbody").html(str);
-                $("#rCount").html(list.length);
-            },
-            error : function(){
-                console.log("댓글리스트조회 ajax통신 실패");
-            }
-        });
-    }
+    <%--function selectReplyList(){--%>
+    <%--    $.ajax({--%>
+    <%--        url : "reply.bo",--%>
+    <%--        //url : '${pageContext.request.contextPath}/board/reply.bo',--%>
+    <%--        data : {bno : ${b.boardNo} },--%>
+    <%--        dataType : "json",--%>
+    <%--        success : function(list) {--%>
+    <%--            console.log(list);--%>
+    <%--            let str = "";--%>
+    <%--            for(let i of list){--%>
+    <%--                str += "<tr>"--%>
+    <%--                    + "<td>" + i.replyWriter + "</td>"--%>
+    <%--                    + "<td>" + i.replyContent + "</td>"--%>
+    <%--                    + "<td>" + i.createDate + "</td>"--%>
+    <%--                    + "</tr>";--%>
+    <%--            }--%>
+    <%--            $("#replyArea tbody").html(str);--%>
+    <%--            $("#rCount").html(list.length);--%>
+    <%--        },--%>
+    <%--        error : function(){--%>
+    <%--            console.log("댓글리스트조회 ajax통신 실패");--%>
+    <%--        }--%>
+    <%--    });--%>
+    <%--}--%>
 
 
-    function insertReply(){
-        $.ajax({
-            url:"insertReply.bo",
-            data:{
-                replyContent : $("#content").val(),
-                refBno : ${b.boardNo}
-            },
-            success : (result) => {
-                if(result > 0){
-                    selectReplyList();
-                    $("#content").val("");
-                }
-            },
-            error : function (){
-                console.log("댓글 작성 ajax통신 실패");
-            }
-        });
-    }
+    <%--function insertReply(){--%>
+    <%--    $.ajax({--%>
+    <%--        url:"insertReply.bo",--%>
+    <%--        data:{--%>
+    <%--            replyContent : $("#content").val(),--%>
+    <%--            refBno : ${b.boardNo}--%>
+    <%--        },--%>
+    <%--        success : (result) => {--%>
+    <%--            if(result > 0){--%>
+    <%--                selectReplyList();--%>
+    <%--                $("#content").val("");--%>
+    <%--            }--%>
+    <%--        },--%>
+    <%--        error : function (){--%>
+    <%--            console.log("댓글 작성 ajax통신 실패");--%>
+    <%--        }--%>
+    <%--    });--%>
+    <%--}--%>
 
 
 

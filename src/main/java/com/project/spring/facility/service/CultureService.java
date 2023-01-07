@@ -25,5 +25,8 @@ public interface CultureService {
     public ArrayList<CultureFacility> selectList(PageInfo pi);
 
 
+    public CultureFacility cultureDetail(String svcId);
+
+
 
 }

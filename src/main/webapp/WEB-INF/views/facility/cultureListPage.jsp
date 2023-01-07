@@ -26,9 +26,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <%--    <%@ page isELIgnored="false" %>--%>
-
     <meta charset="UTF-8">
     <title>시설리스트</title>
     <style>
@@ -67,15 +64,35 @@
             width: 20%;
         }
 
-
     </style>
 
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
-<br><br>
+
 <div align="center">
-    <a href="/insertCultureList">데이터 가져오기</a>
+
+    <div>
+        <input type="text" placeholder="검색어를 입력해주세요">
+        <input type="button" value="검색">
+    </div>
+
+    <br>
+    <div>
+        <h3>상세검색</h3><br>
+        <b>접수기간</b>&nbsp;&nbsp;<input type="date"> ~ <input type="date"> <br> <br>
+        <b>접수상태</b>&nbsp;&nbsp;<input type="checkbox" name="test1" value="test">테스트1<br> <br>
+        <b>지역</b>&nbsp;&nbsp;<input type="checkbox" name="test2" value="test">테스트2<br> <br>
+        <button>상세검색</button>
+    </div>
+
+
+
+
+
+
+    <br><br>
+    <a href="/insertCultureList">데이터 가져오기 확인용</a>
 </div>
 
 
@@ -89,12 +106,17 @@
                     <c:if test="{i%j == 0}">
                         <tr>
                     </c:if>
+
                     <td align="center">
+                        <a href="cultureDetail?svcId=${selectCultureList.svcId}">링크</a><br>
                         <img src="<c:out value="${selectCultureList.imgUrl}" />" width="250px" height="300px">
                         <hr>
                         <c:out value="${selectCultureList.minClassName}"/> <br>
-                        <c:out value="${selectCultureList.serviceName}"/>
+                        <c:out value="${selectCultureList.serviceName}"/><br>
+                        <c:out value="${selectCultureList.svcId}"/>
                     </td>
+
+
                     <c:if test="${i%j == j-1}">
                         </tr>
                     </c:if>
@@ -103,7 +125,7 @@
             </c:when>
             <c:otherwise>
                 <tr>
-                    <td>존재하지 않습니다.</td>
+                    <td>내역이 존재하지 않습니다.</td>
                 </tr>
             </c:otherwise>
         </c:choose>
@@ -111,8 +133,6 @@
 </div>
 
 
-
-<!-- 페이지 이동기능 구현 -->
 <div id="pagingArea">
     <ul class="pagination">
         <c:choose>

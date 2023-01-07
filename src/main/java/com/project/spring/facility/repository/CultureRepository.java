@@ -15,17 +15,11 @@ public interface CultureRepository {
 
     List<CultureFacility> selectCulturelist() throws Exception;
 
-
     int selectListCount();
 
     ArrayList<CultureFacility> selectList(PageInfo pi);
 
-
-
-
-
-
-
+    public CultureFacility cultureDetail(String svcId);
 
 
 }
