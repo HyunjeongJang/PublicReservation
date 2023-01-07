@@ -1,5 +1,6 @@
 package com.project.spring.facility.dto;
 
+
 import com.project.spring.facility.entity.SearchType;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -3,7 +3,11 @@ package com.project.spring.facility.controller;
 import com.project.spring.client.seoulapi.SeoulApiClient;
 import com.project.spring.common.PageInfo;
 import com.project.spring.common.Pagination;
+import com.project.spring.facility.dto.SearchRequest;
+import com.project.spring.facility.dto.SearchResponse;
 import com.project.spring.facility.entity.CultureFacility;
+import com.project.spring.facility.entity.SearchType;
+import com.project.spring.facility.repository.CultureRepository;
 import com.project.spring.facility.service.CultureService;
 
 import lombok.RequiredArgsConstructor;
