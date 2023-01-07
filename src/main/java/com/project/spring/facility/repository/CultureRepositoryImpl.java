@@ -27,10 +27,6 @@ public class CultureRepositoryImpl implements CultureRepository {
     @Override
     public void batchInsert(List<CultureFacility> cultures) {
         sqlSession.insert("cultureMapper.batchInsert", cultures);
-
-        // return cultures.stream()
-        // 	.mapToInt(culture -> sqlSession.insert("cultureMapper.insert", culture))
-        // 	.sum();
     }
 
     @Override

@@ -80,15 +80,21 @@
     <br>
     <div>
         <h3>상세검색</h3><br>
-        <b>접수기간</b>&nbsp;&nbsp;<input type="date"> ~ <input type="date"> <br> <br>
-        <b>접수상태</b>&nbsp;&nbsp;<input type="checkbox" name="test1" value="test">테스트1<br> <br>
-        <b>지역</b>&nbsp;&nbsp;<input type="checkbox" name="test2" value="test">테스트2<br> <br>
+        <b>접수기간</b>&nbsp;&nbsp;<input type="date"> ~ <input type="date"> <br><br>
+        <b>접수상태</b>&nbsp;&nbsp;<input type="checkbox" name="test1" value="test"><br><br>
+        <b>지역</b>&nbsp;&nbsp;<input type="checkbox" name="test2" value="test">테스트2<br><br>
+
+<%--        <form id="form" method="post">--%>
+<%--            <input type="hidden" id="arrayParam" name="arrayParam"/>--%>
+<%--            <c:forEach var="item" items="${selectCultureList}">--%>
+<%--                <input type="checkbox" name="chk_code" value="${selectCultureList.serviceState}">--%>
+<%--                ${selectCultureList.serviceState}--%>
+<%--            </c:forEach>--%>
+<%--        </form>--%>
+
+
         <button>상세검색</button>
     </div>
-
-
-
-
 
 
     <br><br>
@@ -160,31 +166,24 @@
 </div>
 
 
+<script>
+    var array = new Array();
+    $('input:checkbox[name=chk_code]:checked').each(function() {
+        array.push(this.value);
+    });
 
+    $("#arrayParam").val(array);
 
+    $("#form").attr("action", "/");
+    $("#form").submit();
 
-
-
-
-
-
+</script>
 
 
 
 
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

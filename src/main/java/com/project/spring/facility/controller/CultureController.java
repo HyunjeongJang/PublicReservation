@@ -84,10 +84,6 @@ public class CultureController {
 
 
 
-
-
-
-
     /**
      * 문화시설 상세보기 & 예약
      */

@@ -15,20 +15,13 @@
 
 <div align="center">
     <h2>추천서비스</h2>
-    <table>
-
 
 <%--    <c:if test="${empty recommendCultureList }">--%>
 <%--        <td colspan="5"> 추천서비스가 없습니다.</td>--%>
 <%--    </c:if>--%>
     <c:forEach items="${recommendCultureList }" var="recomendCultureList" >
-        <tr style="width: 250px">
-            <td>${recommendCultureList.placeName}</td>
-            <td><img src="${recommendCultureList.imgUrl}"></td>
-        </tr>
+        ${recomendCultureList.placeName}
     </c:forEach>
-
-    </table>
 
 </div>
 
