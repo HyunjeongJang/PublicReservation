@@ -67,17 +67,8 @@ public class CultureRepositoryImpl implements CultureRepository {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	@Override
+	public List<CultureFacility> recommendCultureList() {
+		return sqlSession.selectList("cultureMapper.recommendCultureList");
+	}
 }

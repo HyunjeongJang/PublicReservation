@@ -22,5 +22,6 @@ public interface CultureRepository {
     public CultureFacility cultureDetail(String svcId);
 
 
+    List<CultureFacility> recommendCultureList();
 }
 

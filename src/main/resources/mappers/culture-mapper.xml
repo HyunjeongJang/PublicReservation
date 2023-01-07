@@ -92,6 +92,14 @@
     </select>
 
 
+    <select id="recommendCultureList" resultMap="cultureFacilityResultSet">
+        SELECT * FROM (
+        SELECT * FROM CULTURAL_FACILITY ORDER BY DBMS_RANDOM.RANDOM
+        )
+        WHERE ROWNUM &lt;= 5
+    </select>
+
+
 
 
 

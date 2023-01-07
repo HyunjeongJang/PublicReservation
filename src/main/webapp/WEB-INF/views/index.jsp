@@ -11,7 +11,7 @@
 
 <br>
 
-<h2 style="text-align: center">추천서비스</h2>
+
 
 <%--<div align="center">--%>
 <%--    <div>--%>
@@ -27,6 +27,11 @@
 <%--        <select><option>선택</option></select>--%>
 <%--    </div>--%>
 <%--</div>--%>
+
+<jsp:include page="common/content.jsp"/>
+
+
+
 
 
 

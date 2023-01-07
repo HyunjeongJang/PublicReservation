@@ -16,7 +16,7 @@ public interface CultureService {
     int retrieveAndSave();
 
 
-//    public List<CultureFacility> selectCulturelist() throws Exception;
+
 
 
 
@@ -27,6 +27,8 @@ public interface CultureService {
 
     public CultureFacility cultureDetail(String svcId);
 
+
+    public List<CultureFacility> recommendCultureList();
 
 
 }

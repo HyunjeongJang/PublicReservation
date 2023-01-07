@@ -102,6 +102,9 @@ public class CultureController {
 //    }
 
 
+    /**
+     * 문화시설 상세보기 & 예약
+     */
     @RequestMapping("/cultureDetail")
     public String cultureDetail(@RequestParam("svcId") String svcId, Model model) {
         CultureFacility cultureFacility = cultureService.cultureDetail(svcId);
@@ -113,10 +116,11 @@ public class CultureController {
 
 
 
-
-
-
-
+    @RequestMapping("/recommendCultureList")
+    public String recommendCultureList(Model model) {
+        model.addAttribute("recommendCultureList", cultureService.recommendCultureList());
+        return "common/content";
+    }
 
 
 
