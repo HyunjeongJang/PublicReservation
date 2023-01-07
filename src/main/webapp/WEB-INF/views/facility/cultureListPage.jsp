@@ -92,7 +92,7 @@
 
 
     <br><br>
-    <a href="/insertCultureList">데이터 가져오기 확인용</a>
+    <a href="${pageContext.request.contextPath}/searchCultureList">데이터 가져오기 확인용</a>
 </div>
 
 

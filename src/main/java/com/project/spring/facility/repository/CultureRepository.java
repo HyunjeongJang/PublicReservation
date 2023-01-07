@@ -2,6 +2,7 @@ package com.project.spring.facility.repository;
 
 import com.project.spring.common.PageInfo;
 import com.project.spring.facility.entity.CultureFacility;
+import com.project.spring.facility.repository.filter.CultureFacilityFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public interface CultureRepository {
 
     int selectListCount();
 
-    ArrayList<CultureFacility> selectList(PageInfo pi);
+    List<CultureFacility> selectList(PageInfo pi, CultureFacilityFilter filter);
 
     public CultureFacility cultureDetail(String svcId);
 

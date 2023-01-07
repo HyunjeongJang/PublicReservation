@@ -31,6 +31,8 @@ public class CultureFacility {
 
 	// 팩토리 메소드 -> 객체 생성을 위한 메소드
 	// Builder 패턴 -> 객체 생성을 위한 디자인패턴
+	// 인자가 너무 많을 떄 생성자를 만들지 않아도 필요한 인자들만 객체를 생성할 수 있음
+	// 인자들을 선택해서 생성자들이 여러개 나올 때 주로 엔티티 만들떄 빌더패턴을 사용함
 	public static CultureFacility of(ReservationCultureDto culture) {
 		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
 		// LocalDateTime time = LocalDateTime.parse(~~~~, formatter);

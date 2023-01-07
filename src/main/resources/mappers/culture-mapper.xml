@@ -28,21 +28,21 @@
 
     <insert id="insert" parameterType="cultureFacility">
         INSERT INTO CULTURAL_FACILITY
-            (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
-             RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
+        (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+         RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
         VALUES
             (SEQ_CULTURAL.NEXTVAL, #{svcId}, #{minClassName}, #{serviceState}, #{serviceName}, #{placeName}, #{x}, #{y},
-                #{serviceOpenBeginDate}, #{serviceOpenEndDate}, #{rcptBeginDate},#{rcptEndDate}, #{areaName}, #{tel},
-                #{imageURL}, #{revStdDay})
+             #{serviceOpenBeginDate}, #{serviceOpenEndDate}, #{rcptBeginDate},#{rcptEndDate}, #{areaName}, #{tel},
+             #{imageURL}, #{revStdDay})
     </insert>
 
     <insert id="batchInsert" parameterType="list">
         INSERT INTO CULTURAL_FACILITY
-            (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
-            RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
+        (SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+        RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY)
         SELECT culture.* FROM (
-            <foreach collection="list" item="c" separator="UNION ALL ">
-                <![CDATA[
+        <foreach collection="list" item="c" separator="UNION ALL ">
+            <![CDATA[
 				    SELECT
                         #{c.svcId},
                         #{c.minClassName},
@@ -57,11 +57,11 @@
                         #{c.rcptEndDate},
                         #{c.areaName},
                         #{c.tel},
-                        #{c.imageUrl},
+                        #{c.imgUrl},
                         #{c.revStdDay}
                     FROM dual
                 ]]>
-            </foreach>
+        </foreach>
         ) culture
     </insert>
 
@@ -78,11 +78,20 @@
     </select>
 
 
-    <select id="selectList" resultMap="cultureFacilityResultSet">
+    <select id="selectList" resultMap="cultureFacilityResultSet" parameterType="com.project.spring.facility.repository.filter.CultureFacilityFilter">
         SELECT
-            SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
-             RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY
+        SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+        RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY
         FROM CULTURAL_FACILITY
+        WHERE SVCNM LIKE '%' || #{search} || '%'
+        <choose>
+            <when test="acceptStatusList.size != 0">
+                AND SVCSTATNM IN
+                <foreach collection="acceptStatusList" item="acceptStatus" separator="," open="(" close=")">
+                    #{acceptStatus}
+                </foreach>
+            </when>
+        </choose>
     </select>
 
     <select id="selectDetail" resultMap="cultureFacilityResultSet">
@@ -94,8 +103,8 @@
 
     <select id="recommendCultureList" resultMap="cultureFacilityResultSet">
         SELECT * FROM (
-        SELECT * FROM CULTURAL_FACILITY ORDER BY DBMS_RANDOM.RANDOM
-        )
+                          SELECT * FROM CULTURAL_FACILITY ORDER BY DBMS_RANDOM.RANDOM
+                      )
         WHERE ROWNUM &lt;= 5
     </select>
 
