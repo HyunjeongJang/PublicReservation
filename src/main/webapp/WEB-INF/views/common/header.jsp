@@ -42,13 +42,23 @@
 
         <div id="header_1_right">
 
-<%--            <c:when test="${ loginUser == null }">--%>
-                <a href="login.me"/><b>로그인</b></a>
-<%--            </c:when>--%>
-<%--            <c:otherwise>--%>
-<%--                <label>${loginUser.userName }님 환영합니다.</label> &nbsp;&nbsp;--%>
-<%--                <a href="${pageContext.request.contextPath}/logout">로그아웃</a>--%>
-<%--            </c:otherwise>--%>
+            <c:choose>
+                <c:when test="${ empty loginUser}">
+                    <a href="login.me"/><b>로그인</b></a>
+                </c:when>
+                <c:otherwise>
+                    <label>
+                        <img src="${loginUser.profileImage}" width="50px">
+                            ${loginUser.username }님 환영합니다.
+                    </label> &nbsp;&nbsp;
+<%--                    <a href="${contextPath}/myPage.me">마이페이지</a>--%>
+                    <a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+                </c:otherwise>
+            </c:choose>
+
+
+
+
 
         </div>
     </div>

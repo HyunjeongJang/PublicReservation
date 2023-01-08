@@ -79,10 +79,19 @@
 
     <br>
     <div>
+
         <h3>상세검색</h3><br>
-        <b>접수기간</b>&nbsp;&nbsp;<input type="date"> ~ <input type="date"> <br><br>
-        <b>접수상태</b>&nbsp;&nbsp;<input type="checkbox" name="test1" value="test"><br><br>
-        <b>지역</b>&nbsp;&nbsp;<input type="checkbox" name="test2" value="test">테스트2<br><br>
+<%--        <form id="form" method="post">--%>
+
+            <b>접수기간</b>&nbsp;&nbsp;<input type="date"> ~ <input type="date"> <br><br>
+            <b>접수상태</b>
+            &nbsp;&nbsp;<input type="checkbox" name="chk_code" value="안내중">안내중
+            &nbsp;&nbsp;<input type="checkbox" name="chk_code" value="접수중">접수중
+            &nbsp;&nbsp;<input type="checkbox" name="chk_code" value="예약마감">예약마감
+            &nbsp;&nbsp;<input type="checkbox" name="chk_code" value="접수종료">접수종료<br><br>
+            <b>지역</b>&nbsp;&nbsp;<input type="checkbox" name="test2" value="test">테스트2<br><br>
+
+<%--        </form>--%>
 
 <%--        <form id="form" method="post">--%>
 <%--            <input type="hidden" id="arrayParam" name="arrayParam"/>--%>
@@ -91,6 +100,21 @@
 <%--                ${selectCultureList.serviceState}--%>
 <%--            </c:forEach>--%>
 <%--        </form>--%>
+
+
+
+<%--        <script>--%>
+<%--            var array = new Array(); // 배열 선언--%>
+<%--            $('input:checkbox[name=chk_code]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.--%>
+<%--                array.push(this.value);--%>
+<%--            });--%>
+
+<%--            $("#arrayParam").val(array);--%>
+
+<%--            $("#form").attr("action", "/selectCultureList");--%>
+<%--            $("#form").submit();--%>
+<%--        </script>--%>
+
 
 
         <button>상세검색</button>
@@ -166,97 +190,10 @@
 </div>
 
 
-<script>
-    var array = new Array();
-    $('input:checkbox[name=chk_code]:checked').each(function() {
-        array.push(this.value);
-    });
-
-    $("#arrayParam").val(array);
-
-    $("#form").attr("action", "/");
-    $("#form").submit();
-
-</script>
-
-
-
-
 
 </body>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br>
-
-<%--        <c:set var ="url" value="${boardCode }?cpage="/>--%>
-<%--        <!-- 페이지 이동기능 구현 -->--%>
-<%--        <div id="pagingArea">--%>
-<%--            <ul class="pagination">--%>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${ pi.currentPage eq 1 }">--%>
-<%--                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        &lt;%&ndash;							<li class="page-item"><a class="page-link" href="list.bo?cpage=${pi.currentPage - 1}&s_type=${s_type}&s_content=${s_content}">Previous</a></li>&ndash;%&gt;--%>
-<%--                        <li class="page-item"><a class="page-link" href="${url}${pi.currentPage -1 }${sUrl}">Previous</a></li>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-
-<%--                <c:forEach var="item" begin="${pi.startPage }" end="${pi.endPage }">--%>
-<%--                    &lt;%&ndash;						<li class="page-item"><a class="page-link" href="list.bo?cpage=${item}&s_type=${s_type}&s_content=${s_content}">${item }</a></li>&ndash;%&gt;--%>
-<%--                    <li class="page-item"><a class="page-link" href="${url}${item }${sUrl}">${item }</a></li>--%>
-<%--                </c:forEach>--%>
-
-<%--                <c:choose>--%>
-<%--                    <c:when test="${ pi.currentPage eq pi.maxPage }">--%>
-<%--                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        &lt;%&ndash;							<li class="page-item"><a class="page-link" href="list.bo?cpage=${pi.currentPage + 1}&s_type=${s_type}&s_content=${s_content}">Next</a></li>&ndash;%&gt;--%>
-<%--                        <li class="page-item"><a class="page-link" href="${url}${pi.currentPage + 1 }${sUrl}">Next</a></li>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-<%--            </ul>--%>
-<%--        </div>--%>
-
-
-<!-- 검색 기능 구현 -->
-<%--        <br clear="both"><br>--%>
-
-<%--        <form id="searchForm" action="${boardCode }" method="get" align="center">--%>
-<%--            <div class="select">--%>
-<%--                <select class="custom-select" name="condition">--%>
-<%--                    &lt;%&ndash;						검색 내코드 &ndash;%&gt;--%>
-<%--                    &lt;%&ndash;						<option value="writer" ${s_type == 'WRITER' ? "selected" : "" }>작성자</option>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;						<option value="title" ${s_type == 'TITLE' ? "selected" : "" }>제목</option>&ndash;%&gt;--%>
-<%--                    &lt;%&ndash;						<option value="content" ${s_type == 'CONTENT' ? "selected" : "" }>내용</option>&ndash;%&gt;--%>
-<%--                    <option value="writer">작성자</option>--%>
-<%--                    <option value="title">제목</option>--%>
-<%--                    <option value="content">내용</option>--%>
-<%--                    <option value="titleAndContent">제목+내용</option>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-<%--            <div class="text">--%>
-<%--                <input type="text" class="form-control" name="keyword">--%>
-<%--            </div>--%>
-<%--            <button type="submit" class="searchBtn btn btn-secondary">검색</button>--%>
-<%--        </form>--%>
-<%--        <br><br>--%>
-<%--    </div>--%>
-<br><br>
 
 
 </div>

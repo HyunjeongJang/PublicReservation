@@ -1,12 +1,16 @@
 package com.project.spring.facility.controller;
 
+import com.google.gson.Gson;
 import com.project.spring.client.seoulapi.SeoulApiClient;
 import com.project.spring.facility.dto.CultureFacilityBoardRequest;
 import com.project.spring.facility.dto.CultureFacilityBoardResponse;
 import com.project.spring.facility.entity.CultureFacility;
+import com.project.spring.facility.dto.Reply;
 import com.project.spring.facility.service.CultureService;
 
+import com.project.spring.facility.service.ReplyService;
 import com.project.spring.facility.type.AcceptStatus;
+import com.project.spring.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -15,10 +19,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+
+
 import java.util.List;
 
 @Controller
@@ -28,6 +36,8 @@ public class CultureController {
 
     private final CultureService cultureService;
     private final SeoulApiClient seoulApiClient;
+
+    private final ReplyService replyService;
 
 
     /**
@@ -69,7 +79,7 @@ public class CultureController {
             @RequestParam(value = "accept", defaultValue = "") List<AcceptStatus> acceptStatusList,
             Model model
     ) throws Exception {
-        // TODO : 여기까지 search 와 acceptStatusList를 가져오기
+        // TODO : search 와 acceptStatusList를 가져오기
         System.out.println(search);
         System.out.println(acceptStatusList.toString());
 
@@ -81,6 +91,11 @@ public class CultureController {
         model.addAttribute("pi", resp.getPageInfo());
         return "facility/cultureListPage";
     }
+
+
+
+
+
 
 
 
@@ -96,13 +111,55 @@ public class CultureController {
     }
 
 
-
-
+    /**
+     * 추천서비스
+     */
     @RequestMapping("/recommendCultureList")
     public String recommendCultureList(Model model) {
         model.addAttribute("recommendCultureList", cultureService.recommendCultureList());
         return "common/content";
     }
+
+
+    /**
+     * 댓글 불러오기
+     */
+    @RequestMapping("selectReply")
+    @ResponseBody // 별도의 뷰페이지가 아니라 리턴값을 직접 지정 / json gson 타입의 반환을 지정해줄때
+    public String selectReplyList(String svcId, Model model) {
+        List<Reply> list = replyService.selectReplyList(svcId);
+        Gson gson = new Gson();
+        String result = gson.toJson(list);
+        return result;
+    }
+
+    /**
+     * 댓글 입력
+     */
+    @RequestMapping("insertReply")
+    @ResponseBody // responseBody : 별도의 뷰페이지가 아니라 리턴값을 직접 지정해야 하는경우 사용.
+    public String insertReply(Reply r, HttpSession session) {
+        // 댓글목록 조회
+        User m = (User) session.getAttribute("loginUser");
+        if (m != null) {
+            r.setReplyWriter(m.getUserNo() + "");
+        }
+        int result = replyService.insertReply(r);
+        // gson으로 파싱
+        if (result > 0) {
+            return "1";
+        } else {
+            return "0";
+        }
+    }
+
+
+
+
+
+
+
+
 
 
 

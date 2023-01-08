@@ -38,12 +38,24 @@ public class PhysicalController {
     }
 
 
+//    @GetMapping("/selectPhysicalList")
+//    public String searchPhysicalInfo(
+//            @ModelAttribute("params") final SearchDto params
+//            // @ModelAttribute 전받은 객체를 자동으로 뷰(HTML)까지 전달할수 있음
+//            ,Model model){
+//        PagingResponse<GovDataDTO> response = physicalService.selectPhysicalList(params);
+//        model.addAttribute("response",response);
+//
+//        return "facility/physicalListPage";
+//    }
+
+    // openPostList
     @GetMapping("/selectPhysicalList")
     public String searchPhysicalInfo(
             @ModelAttribute("params") final SearchDto params
             // @ModelAttribute 전받은 객체를 자동으로 뷰(HTML)까지 전달할수 있음
             ,Model model){
-        PagingResponse<GovDataDTO> response = physicalService.selectPhysicalList(params);
+        PagingResponse <GovDataDTO> response = physicalService.selectPhysicalList(params);
         model.addAttribute("response",response);
 
         return "facility/physicalListPage";

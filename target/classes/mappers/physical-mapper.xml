@@ -56,14 +56,15 @@
         FROM PHYSICAL_FACILITY
     </select>
 
-    <select id="count" resultType="int" parameterType="searchDto">
+
+    <select id="count" resultType="int" parameterType="com.project.spring.common.SearchDto">
         SELECT COUNT(*)
         FROM PHYSICAL_FACILITY
     </select>
 
 
 
-    <select id="selectList" resultMap="PhysicalFacility" parameterType="searchDto">
+    <select id="selectList" resultMap="PhysicalFacility" parameterType="com.project.spring.common.SearchDto">
     SELECT
     SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
     RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY

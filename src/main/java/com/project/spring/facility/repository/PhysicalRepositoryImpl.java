@@ -25,7 +25,7 @@ public class PhysicalRepositoryImpl implements PhysicalRepository{
 
     @Override
     public List<GovDataDTO> findAll(SqlSession sqlSession, SearchDto params) {
-        RowBounds rowBounds = new RowBounds(params.getPagination2().getLimitStart(),params.getRecordSize());
+        RowBounds rowBounds = new RowBounds(params.getPagination().getLimitStart(),params.getRecordSize());
 
         return sqlSession.selectList("physicalMapper.PhysicalList",null,rowBounds);
     }

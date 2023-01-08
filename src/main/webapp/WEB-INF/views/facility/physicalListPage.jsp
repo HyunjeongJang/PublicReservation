@@ -144,9 +144,18 @@
         }
 
         document.querySelector('.paging').innerHTML = html;
+
+
     }
 
-
+    function movePage(page) {
+        const queryParams = {
+            page: (page) ? page : 1,
+            recordSize: 12,
+            pageSize: 10
+        }
+        location.href = location.pathname + '?' + new URLSearchParams(queryParams).toString();
+    }
 
 
 

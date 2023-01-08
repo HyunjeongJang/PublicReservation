@@ -9,10 +9,10 @@ import java.util.List;
 public class PagingResponse<T> {
 
     private List<T> list = new ArrayList<>();
-    private Pagination2 pagination2;
+    private Pagination pagination;
 
-    public PagingResponse(List<T> list , Pagination2 pagination2){
+    public PagingResponse(List<T> list , Pagination pagination){
         this.list = list;
-        this.pagination2 = pagination2;
+        this.pagination = pagination;
     }
 }

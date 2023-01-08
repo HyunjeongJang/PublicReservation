@@ -1,7 +1,7 @@
 package com.project.spring.facility.service;
 
 
-import com.project.spring.common.Pagination2;
+import com.project.spring.common.Pagination;
 import com.project.spring.common.PagingResponse;
 import com.project.spring.common.SearchDto;
 import com.project.spring.facility.dto.GovDataDTO;
@@ -28,16 +28,17 @@ public class PhysicalServiceImpl implements PhysicalService{
         return physicalRepository.PhysicalDB(sqlSession,list);
     }
 
+    // finaAllPost
     @Override
-    public PagingResponse<GovDataDTO> selectPhysicalList(SearchDto params) {
+    public PagingResponse<GovDataDTO> selectPhysicalList(final SearchDto params) {
         int count = physicalRepository.count(sqlSession,params);
         if(count < 1){
             return new PagingResponse<>(Collections.emptyList(),null);
         }
-        Pagination2 pagination2 = new Pagination2(count, params);
-        params.setPagination2(pagination2);
+        Pagination pagination = new Pagination(count, params);
+        params.setPagination(pagination);
 
         List<GovDataDTO> list = physicalRepository.findAll(sqlSession , params);
-        return new PagingResponse<>(list, pagination2);
+        return new PagingResponse<>(list, pagination);
     }
 }
