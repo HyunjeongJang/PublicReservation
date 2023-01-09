@@ -1,4 +1,4 @@
-package com.project.spring.common;
+package com.project.spring.common.crawling;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
