@@ -44,6 +44,7 @@ public class PhysicalController {
             // @ModelAttribute 전받은 객체를 자동으로 뷰(HTML)까지 전달할수 있음
             ,Model model){
         PagingResponse<GovDataDTO> response = physicalService.selectPhysicalList(params);
+        System.out.println("페이지"+params.getPage());
         model.addAttribute("response",response);
 
         return "facility/physicalListPage";

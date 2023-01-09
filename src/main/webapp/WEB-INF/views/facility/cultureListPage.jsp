@@ -184,21 +184,6 @@
 
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br>
 
 <%--        <c:set var ="url" value="${boardCode }?cpage="/>--%>

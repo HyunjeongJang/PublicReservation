@@ -86,65 +86,31 @@
         </c:choose>
     </table>
     <!-- 페이징 처리 -->
-    <div class="paging">
-    </div>
+        <div id="pagingArea">
+            <ul class="pagination">
+                <c:choose>
+                    <c:when test="${ params.page eq 1 }">
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item"><a class="page-link" href="selectPhysicalList?page=${params.page - 1}">Previous</a></li>
+                    </c:otherwise>
+                </c:choose>
 
-</div>
+                <c:forEach var="item" begin="${response.pagination2.startPagep }" end="${response.pagination2.endPage }">
+                    <li class="page-item"><a class="page-link" href="selectPhysicalList?page=${item }">${item }</a></li>
+                </c:forEach>
 
-
-</body>
-
-<script>
-
-    window.onload = () =>{
-        findAllPost();
-    }
-
-    function findAllPost() {
-
-
-        const pagination = [[ ${response.pagination2} ]];
-        const params = [[ ${params} ]];
-
-        drawPage(pagination, params);
-    }
-
-    function drawPage(pagination, params) {
-
-        if ( !pagination || !params ) {
-            document.querySelector('.paging').innerHTML = '';
-            throw new Error('Missing required parameters...');
-        }
-
-        let html = '';
-
-        // 첫 페이지, 이전 페이지
-        if (pagination.existPrevPage) {
-            html += `
-            <a href="javascript:void(0);" onclick="movePage(1)" class="page_bt first">첫 페이지</a>
-            <a href="javascript:void(0);" onclick="movePage(${pagination.startPage - 1})" class="page_bt prev">이전 페이지</a>
-        `;
-        }
-
-        // 페이지 번호
-        html += '<p>';
-        for (let i = pagination.startPage; i <= pagination.endPage; i++) {
-            html += (i !== params.page)
-                ? `<a href="javascript:void(0);" onclick="movePage(${i});">${i}</a>`
-                : `<span class="on">${i}</span>`
-        }
-        html += '</p>';
-
-        // 다음 페이지, 마지막 페이지
-        if (pagination.existNextPage) {
-            html += `
-            <a href="javascript:void(0);" onclick="movePage(${pagination.endPage + 1});" class="page_bt next">다음 페이지</a>
-            <a href="javascript:void(0);" onclick="movePage(${pagination.totalPageCount});" class="page_bt last">마지막 페이지</a>
-        `;
-        }
-
-        document.querySelector('.paging').innerHTML = html;
-    }
+                <c:choose>
+                    <c:when test="${ params.page eq response.pagination2.totalPageCount }">
+                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item"><a class="page-link" href="selectPhysicalList?page=${params.page + 1}">Next</a></li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </div>
 
 
 
