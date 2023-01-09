@@ -3,6 +3,7 @@ package com.project.spring.facility.controller;
 import com.project.spring.common.PagingResponse;
 import com.project.spring.common.PhysicalInfoExplorer;
 import com.project.spring.common.SearchDto;
+import com.project.spring.common.crawling.Test33;
 import com.project.spring.facility.dto.GovDataDTO;
 import com.project.spring.facility.service.PhysicalService;
 import lombok.RequiredArgsConstructor;
@@ -11,11 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,6 +22,7 @@ public class PhysicalController {
     private final PhysicalInfoExplorer physicalInfoExplorer;
 
     private final PhysicalService physicalService;
+    private final Test33 jsoupTest;
 
 
     @GetMapping("/down")
@@ -38,15 +35,22 @@ public class PhysicalController {
     }
 
 
-    @GetMapping("/selectPhysicalList")
-    public String searchPhysicalInfo(
-            @ModelAttribute("params") final SearchDto params
-            // @ModelAttribute 전받은 객체를 자동으로 뷰(HTML)까지 전달할수 있음
-            ,Model model){
-        PagingResponse<GovDataDTO> response = physicalService.selectPhysicalList(params);
-        System.out.println("페이지"+params.getPage());
-        model.addAttribute("response",response);
+//    @GetMapping("/selectPhysicalList")
+//    public String searchPhysicalInfo(
+//            @ModelAttribute("params") final SearchDto params
+//            // @ModelAttribute 전받은 객체를 자동으로 뷰(HTML)까지 전달할수 있음
+//            ,Model model){
+//        PagingResponse<GovDataDTO> response = physicalService.selectPhysicalList(params);
+//        System.out.println("페이지"+params.getPage());
+//        model.addAttribute("response",response);
+//
+//        return "facility/physicalListPage";
+//    }
 
-        return "facility/physicalListPage";
+    @GetMapping("/selectPhysicalList")
+    public String imageTest(Model model){
+//        String image = jsoupTest.findImage();
+//        model.addAttribute("image",image);
+        return "ImageTest";
     }
 }
