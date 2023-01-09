@@ -88,8 +88,10 @@
     <!-- 페이징 처리 -->
     <div class="paging">
     </div>
+    <br><br><br>
 
 </div>
+
 
 
 </body>
@@ -103,7 +105,7 @@
     function findAllPost() {
 
 
-        const pagination = [[ ${response.pagination2} ]];
+        const pagination = [[ ${response.pagination} ]];
         const params = [[ ${params} ]];
 
         drawPage(pagination, params);
@@ -111,12 +113,12 @@
 
     function drawPage(pagination, params) {
 
-        if ( !pagination || !params ) {
-            document.querySelector('.paging').innerHTML = '';
-            throw new Error('Missing required parameters...');
-        }
-
-        let html = '';
+        // if ( !pagination || !params ) {
+        //     document.querySelector('.paging').innerHTML = '';
+        //     throw new Error('Missing required parameters...');
+        // }
+        //
+        // let html = '';
 
         // 첫 페이지, 이전 페이지
         if (pagination.existPrevPage) {
@@ -128,7 +130,7 @@
 
         // 페이지 번호
         html += '<p>';
-        for (let i = pagination.startPage; i <= pagination.endPage; i++) {
+        for (let i = ${pagination.startPage}; i <= ${pagination.endPage}; i++) {
             html += (i !== params.page)
                 ? `<a href="javascript:void(0);" onclick="movePage(${i});">${i}</a>`
                 : `<span class="on">${i}</span>`
