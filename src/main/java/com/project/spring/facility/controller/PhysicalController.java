@@ -49,8 +49,8 @@ public class PhysicalController {
 
     @GetMapping("/selectPhysicalList")
     public String imageTest(Model model){
-//        String image = jsoupTest.findImage();
-//        model.addAttribute("image",image);
+        String image = jsoupTest.findImage();
+        model.addAttribute("image",image);
         return "ImageTest";
     }
 }

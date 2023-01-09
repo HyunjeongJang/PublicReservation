@@ -13,12 +13,10 @@ public class Test33 {
 
 
 
-//    public String findImage() {
-
-    public static void main(String[] args) {
+    public String findImage() {
 
 
-        String URL = "https://search.naver.com/search.naver?where=image&sm=tab_jum&query=홍콩반점";
+        String URL = "https://www.mangoplate.com/search/%ED%99%8D%EC%BD%A9%EB%B0%98%EC%A0%90";
 
         String imageSrc;
 
@@ -27,11 +25,9 @@ public class Test33 {
         {
             try {
                 doc = Jsoup.connect(URL).get();
-//                Elements elem = doc.select("span[class=\"thumb\"]");
-                Element elem = doc;
-//                imageSrc = elem.attr("src");
-                System.out.println(elem);
-//                return imageSrc;
+                Element elem = doc.select(".thumb > img").get(0);
+                imageSrc = elem.attr("data-original");
+                    return imageSrc;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
