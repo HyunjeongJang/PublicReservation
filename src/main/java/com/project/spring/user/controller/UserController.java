@@ -9,7 +9,7 @@ public class UserController {
     /**
      * 회원 로그인페이지로 이동
      */
-    @GetMapping("login.me")
+    @GetMapping("/loginPage")
     public String login() {
         return "user/loginPage";
     }

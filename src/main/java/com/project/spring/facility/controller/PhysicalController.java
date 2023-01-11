@@ -35,22 +35,22 @@ public class PhysicalController {
     }
 
 
-//    @GetMapping("/selectPhysicalList")
-//    public String searchPhysicalInfo(
-//            @ModelAttribute("params") final SearchDto params
-//            // @ModelAttribute 전받은 객체를 자동으로 뷰(HTML)까지 전달할수 있음
-//            ,Model model){
-//        PagingResponse<GovDataDTO> response = physicalService.selectPhysicalList(params);
-//        System.out.println("페이지"+params.getPage());
-//        model.addAttribute("response",response);
-//
-//        return "facility/physicalListPage";
-//    }
-
     @GetMapping("/selectPhysicalList")
-    public String imageTest(Model model){
-        String image = jsoupTest.findImage();
-        model.addAttribute("image",image);
-        return "ImageTest";
+    public String searchPhysicalInfo(
+            @ModelAttribute("params") final SearchDto params
+            // @ModelAttribute 전받은 객체를 자동으로 뷰(HTML)까지 전달할수 있음
+            ,Model model){
+        PagingResponse<GovDataDTO> response = physicalService.selectPhysicalList(params);
+        System.out.println("페이지"+params.getPage());
+        model.addAttribute("response",response);
+
+        return "facility/physicalListPage";
     }
+
+//    @GetMapping("/selectPhysicalList")
+//    public String imageTest(Model model){
+//        String image = jsoupTest.findImage();
+//        model.addAttribute("image",image);
+//        return "ImageTest";
+//    }
 }

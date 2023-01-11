@@ -1,6 +1,7 @@
 package com.project.spring.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,7 @@ public class LoginController {
     public LoginController(UserService userService) {
         this.userService = userService;
     }
+
 
     @RequestMapping(value="/login")
     public ModelAndView login(@RequestParam("code") String code, HttpSession session) {

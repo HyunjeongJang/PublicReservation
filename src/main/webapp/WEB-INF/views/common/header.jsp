@@ -30,9 +30,11 @@
     <div id="header_1">
 
         <div id="header_1_left">
+            <a href="${pageContext.request.contextPath}/">
             <video width="100" height="100" preload="none" style="background: transparent  url('https://cdn-icons-png.flaticon.com/512/9284/9284483.png') 50% 50% / fit no-repeat;" autoplay="autoplay" loop="true" muted="muted" playsinline="">
                 <source src="https://cdn-icons-mp4.flaticon.com/512/9284/9284483.mp4" type="video/mp4">
             </video>
+            </a>
         </div>
 
         <div id="header_1_center">
@@ -44,7 +46,7 @@
 
             <c:choose>
                 <c:when test="${ empty loginUser}">
-                    <a href="login.me"/><b>로그인</b></a>
+                    <a href="${pageContext.request.contextPath}/loginPage"/><b>로그인</b></a>
                 </c:when>
                 <c:otherwise>
                     <label>
@@ -59,7 +61,6 @@
 
 
 
-
         </div>
     </div>
 
@@ -68,7 +69,7 @@
             <li><a href="<c:url value="/"/>">HOME</a></li>
             <li><a href="${pageContext.request.contextPath}/selectPhysicalList">체육시설</a> </li>
             <li><a href="${pageContext.request.contextPath}/selectCultureList">문화시설</a> </li>
-            <li><a href="">예약확인</a></li>
+            <li><a href="${pageContext.request.contextPath}/reservationList">예약확인</a></li>
         </ul>
     </div>
 </div>

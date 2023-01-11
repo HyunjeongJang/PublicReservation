@@ -32,7 +32,7 @@ public class PhysicalInfoExplorer {
         List<Map<String, String>> list = new ArrayList<>();
 
         try {
-            // 학원 목록 읽어오기
+            // 목록 읽어오기
             createDocument(list);
             result += physicalService.PhysicalDB(list);
 
@@ -66,6 +66,10 @@ public class PhysicalInfoExplorer {
             Map<String, String> map = new HashMap<>();
             Node nNode = nList.item(i);
             Element eElement = (Element) nNode;
+
+//            if(getTagValue("SVCSTATNM", eElement).equals("접수종료")){
+//                continue;
+//            }
 
             map.put("svcid", getTagValue("SVCID", eElement));
             map.put("minClassNm", getTagValue("MINCLASSNM", eElement));

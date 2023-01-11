@@ -116,8 +116,6 @@
 
 
 
-
-
     <%--function movePage(bno) {--%>
     <%--    location.href = '${contextPath}/board/detail/${boardCode}/' + bno;--%>
     <%--}--%>

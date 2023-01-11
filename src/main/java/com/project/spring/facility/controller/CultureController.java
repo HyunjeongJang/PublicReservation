@@ -83,7 +83,7 @@ public class CultureController {
         System.out.println(search);
         System.out.println(acceptStatusList.toString());
 
-        // 이 데이터를 가지고 쿼리문을 작성하면 된다. AcceptStatus.A.getKorName();
+        // 이 데이터를 가지고 쿼리문을 작성하면 됨 AcceptStatus.A.getKorName();
         CultureFacilityBoardRequest req = new CultureFacilityBoardRequest(currentPage, search, acceptStatusList);
         CultureFacilityBoardResponse resp = cultureService.selectList(req);
 
@@ -97,10 +97,8 @@ public class CultureController {
 
 
 
-
-
     /**
-     * 문화시설 상세보기 & 예약
+     * 문화시설 상세보기 & 예약페이지
      */
     @RequestMapping("/cultureDetail")
     public String cultureDetail(@RequestParam("svcId") String svcId, Model model) {
@@ -152,16 +150,6 @@ public class CultureController {
             return "0";
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -22,7 +22,7 @@ public class UserService {
         String accessToken = kakaoOAuthClient.getAccessToken(code);
         OAuthUser oAuthUser = kakaoOAuthClient.getUserInfo(accessToken);
         User user = User.of(oAuthUser);
-        // TODO : 지금 Insert 하는데, 이미 회원가입처리 되어있으면 Find(Select) 만 해서 반환만.
+        // TODO : Insert 하는데, 이미 회원가입처리 되어있으면 Find(Select) 만 해서 반환만.
         int result = userRepository.insertUser(user);
         System.out.println(result);
         // TODO : 저장된걸 Select 해서 반환만.

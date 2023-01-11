@@ -11,7 +11,7 @@
 
 <br>
 
-
+<img src="${image}" width="500px">
 
 <%--<div align="center">--%>
 <%--    <div>--%>
