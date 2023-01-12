@@ -44,7 +44,7 @@
 
             <c:choose>
                 <c:when test="${ empty loginUser}">
-                    <a href="login.me"/><b>로그인</b></a>
+                    <a href="memberLogin"/><b>로그인</b></a>
                 </c:when>
                 <c:otherwise>
                     <label>

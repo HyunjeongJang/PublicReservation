@@ -22,5 +22,11 @@
         VALUES
             (SEQ_UNO.NEXTVAL, #{provider}, #{providerId}, #{username}, #{email}, #{profileImage})
     </insert>
+    <insert id="naverInsert" parameterType="user">
+        INSERT INTO MEMBER
+            (USER_NO, USERNAME, EMAIL, PROFILE_IMAGE)
+        VALUES
+            (SEQ_UNO.NEXTVAL,#{username}, #{email}, #{profileImage})
+    </insert>
 
 </mapper>

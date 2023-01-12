@@ -1,5 +1,6 @@
 package com.project.spring.user.repository;
 
+import com.project.spring.client.oauth.dto.naver.NaverOauthAttribute;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,7 @@ public class UserRepository {
 		return sqlSession.insert("userMapper.insert", user);
 	}
 
+	public int insertNaverUser(NaverOauthAttribute naverOauthAttribute) {
+		return  sqlSession.insert("userMapper.naverInsert",naverOauthAttribute);
+	}
 }

@@ -16,7 +16,6 @@ import java.util.*;
 
 @Component
 public class PhysicalInfoExplorer {
-
     private static final Logger logger = LoggerFactory.getLogger(PhysicalInfoExplorer.class);
 
     @Autowired
@@ -34,6 +33,7 @@ public class PhysicalInfoExplorer {
         try {
             // 학원 목록 읽어오기
             createDocument(list);
+
             result += physicalService.PhysicalDB(list);
 
         } catch (Exception e) {
@@ -62,10 +62,15 @@ public class PhysicalInfoExplorer {
 //        NodeList nList = root.getElementsByTagName("row").item(0).getChildNodes();
             NodeList nList = root.getElementsByTagName("row");
         System.out.println(nList.getLength());
+
         for (int i = 0; i < nList.getLength(); i++) {
             Map<String, String> map = new HashMap<>();
             Node nNode = nList.item(i);
             Element eElement = (Element) nNode;
+
+            if(getTagValue("SVCSTATNM", eElement).equals("접수중")){
+                continue;
+            }
 
             map.put("svcid", getTagValue("SVCID", eElement));
             map.put("minClassNm", getTagValue("MINCLASSNM", eElement));
@@ -103,7 +108,6 @@ public class PhysicalInfoExplorer {
 
             // 목록 정보 데이터 파싱하기
             parseXml(doc.getDocumentElement(), list);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package com.project.spring.user.service;
 
+import com.project.spring.client.oauth.dto.naver.NaverOauthAttribute;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,10 @@ public class UserService {
         return user;
     }
 
+    public NaverOauthAttribute NaverLogin(NaverOauthAttribute naverOauthAttribute) {
+        userRepository.insertNaverUser(naverOauthAttribute);
+
+        return naverOauthAttribute;
+
+    }
 }
