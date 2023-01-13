@@ -73,7 +73,7 @@
 <div align="center">
 
     <div>
-        <input type="text" placeholder="검색어를 입력해주세요">
+        <input type="text" placeholder="검색어를 입력해주세요" id="searchKeyword">
         <input type="button" value="검색">
     </div>
 
@@ -89,35 +89,36 @@
             &nbsp;&nbsp;<input type="checkbox" name="chk_code" value="접수중">접수중
             &nbsp;&nbsp;<input type="checkbox" name="chk_code" value="예약마감">예약마감
             &nbsp;&nbsp;<input type="checkbox" name="chk_code" value="접수종료">접수종료<br><br>
-            <b>지역</b>&nbsp;&nbsp;<input type="checkbox" name="test2" value="test">테스트2<br><br>
-
-<%--        </form>--%>
-
-<%--        <form id="form" method="post">--%>
-<%--            <input type="hidden" id="arrayParam" name="arrayParam"/>--%>
-<%--            <c:forEach var="item" items="${selectCultureList}">--%>
-<%--                <input type="checkbox" name="chk_code" value="${selectCultureList.serviceState}">--%>
-<%--                ${selectCultureList.serviceState}--%>
-<%--            </c:forEach>--%>
-<%--        </form>--%>
+            <b>지역</b>
+            <select id="sel_area">
+                &nbsp;&nbsp;<option value="강남구">강남구</option>
+                &nbsp;&nbsp;<option value="노원구">노원구</option>
+            </select>
+            <br><br>
 
 
-
-<%--        <script>--%>
-<%--            var array = new Array(); // 배열 선언--%>
-<%--            $('input:checkbox[name=chk_code]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.--%>
-<%--                array.push(this.value);--%>
-<%--            });--%>
-
-<%--            $("#arrayParam").val(array);--%>
-
-<%--            $("#form").attr("action", "/selectCultureList");--%>
-<%--            $("#form").submit();--%>
-<%--        </script>--%>
-
-
-
-        <button>상세검색</button>
+        <form id="form" method="get" action="<c:url value="/selectCultureList"/>">
+            <input type="hidden" id="search" name="search">
+            <input type="hidden" id="accept" name="accept">
+            <input type="hidden" id="area" name="area">
+        </form>
+        <button onclick="detailSearch()">상세검색</button>
+        <script>
+            function detailSearch() {
+                const checkCode = []; // 배열 선언
+                $('input:checkbox[name=chk_code]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+                    checkCode.push(this.value);
+                });
+                // 이렇게 잘 넘어온 값을 확인하고, 이걸 서버로 보내는게 목표
+                // console.log(checkCode)
+                // console.log($('#sel_area option:checked').text())
+                // console.log($('#searchKeyword').val())
+                $('#search').val($('#searchKeyword').val())
+                $('#accept').val(checkCode.join(","))
+                $('#area').val($('#sel_area option:checked').text())
+                $('form').submit()
+            }
+        </script>
     </div>
 
 

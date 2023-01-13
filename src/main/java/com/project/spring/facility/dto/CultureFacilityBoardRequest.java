@@ -13,5 +13,6 @@ public class CultureFacilityBoardRequest {
     private int currentPage;
     private String search;
     private List<AcceptStatus> acceptStatusList;
+    private String area;
 
 }

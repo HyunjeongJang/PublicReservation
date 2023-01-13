@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userMapper">
+
+    <resultMap type="com.project.spring.user.entity.User" id="userResultSet">
+        <result column="USER_NO" property="userNo"/>
+        <result column="PROVIDER" property="provider"/>
+        <result column="PROVIDER_ID" property="providerId"/>
+        <result column="USERNAME" property="username"/>
+        <result column="EMAIL" property="email"/>
+        <result column="PROFILE_IMAGE" property="profileImage"/>
+        <result column="ADDRESS" property="address"/>
+        <result column="INTEREST" property="interest"/>
+        <result column="LATEST_SEARCH" property="latestSearch"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="user">
+        INSERT INTO MEMBER
+            (USER_NO, PROVIDER, PROVIDER_ID, USERNAME, EMAIL, PROFILE_IMAGE)
+        VALUES
+            (SEQ_UNO.NEXTVAL, #{provider}, #{providerId}, #{username}, #{email}, #{profileImage})
+    </insert>
+
+    <select id="select" parameterType="Map" resultMap="userResultSet">
+        SELECT * FROM MEMBER WHERE PROVIDER = #{provider} AND PROVIDER_ID = #{providerId}
+    </select>
+
+</mapper>

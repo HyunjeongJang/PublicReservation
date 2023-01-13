@@ -36,9 +36,9 @@ public class LoginController {
         ModelAndView mav = new ModelAndView();
         User loginUser = userService.login(code);
 
-        System.out.println("login info : " + loginUser.toString());
+        System.out.println("login info : " + loginUser.getProfileImage());
         session.setAttribute("loginUser", loginUser);
-        mav.setViewName("index");
+        mav.setViewName("redirect:/");
         return mav;
     }
 
@@ -46,10 +46,8 @@ public class LoginController {
     public ModelAndView logout(HttpSession session) {
         ModelAndView mav = new ModelAndView();
 
-        kakaoApi.kakaoLogout((String)session.getAttribute("accessToken"));
-        session.removeAttribute("accessToken");
-        session.removeAttribute("userId");
-        mav.setViewName("index");
+        session.removeAttribute("loginUser");
+        mav.setViewName("redirect:/");
         return mav;
     }
 

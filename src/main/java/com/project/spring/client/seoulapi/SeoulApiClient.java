@@ -19,6 +19,7 @@ public class SeoulApiClient {
 	private static final String SEOUL_API_BASE_URL = "http://openAPI.seoul.go.kr:8088";
 	private final String apiKey = "5466506d73616868373275546a7274";
 
+	// Scheduling
 	public List<ReservationCultureDto> getReservationCultureList() {
 		String serviceName = "ListPublicReservationCulture";
 		String url = this.generateUrl(serviceName, 1, 1000);

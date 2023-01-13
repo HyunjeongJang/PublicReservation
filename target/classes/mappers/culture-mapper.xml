@@ -92,6 +92,11 @@
                 </foreach>
             </when>
         </choose>
+        <choose>
+            <when test="!area.isBlank()">
+                AND AREANM = #{area}
+            </when>
+        </choose>
     </select>
 
     <select id="selectDetail" resultMap="cultureFacilityResultSet">

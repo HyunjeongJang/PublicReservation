@@ -14,8 +14,9 @@ import java.util.List;
 public class CultureFacilityFilter {
     private String search;
     private List<AcceptStatus> acceptStatusList;
+    private String area;
 
     public static CultureFacilityFilter from(CultureFacilityBoardRequest req) {
-        return new CultureFacilityFilter(req.getSearch(), req.getAcceptStatusList());
+        return new CultureFacilityFilter(req.getSearch(), req.getAcceptStatusList(), req.getArea());
     }
 }

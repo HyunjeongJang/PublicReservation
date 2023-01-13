@@ -1,7 +1,5 @@
 package com.project.spring.user.service;
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.spring.client.oauth.KakaoOAuthClient;
@@ -21,12 +19,20 @@ public class UserService {
     public User login(String code) {
         String accessToken = kakaoOAuthClient.getAccessToken(code);
         OAuthUser oAuthUser = kakaoOAuthClient.getUserInfo(accessToken);
-        User user = User.of(oAuthUser);
-        // TODO : Insert 하는데, 이미 회원가입처리 되어있으면 Find(Select) 만 해서 반환만.
-        int result = userRepository.insertUser(user);
-        System.out.println(result);
-        // TODO : 저장된걸 Select 해서 반환만.
-        return user;
+
+        // User user = userRepository.find(oAuthUser.getProvider(), oAuthUser.getId());
+        // if (user == null) {
+        //     user = User.of(oAuthUser);
+        //     userRepository.insertUser(user);
+        // }
+        // return user;
+        if (userRepository.exist(oAuthUser.getProvider(), oAuthUser.getId())) {
+            return userRepository.find(oAuthUser.getProvider(), oAuthUser.getId());
+        } else {
+            User user = User.of(oAuthUser);
+            userRepository.insertUser(user);
+            return user;
+        }
     }
 
 }

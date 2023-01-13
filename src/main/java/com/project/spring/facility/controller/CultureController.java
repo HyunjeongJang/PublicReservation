@@ -77,20 +77,23 @@ public class CultureController {
             @RequestParam(value = "cpage", defaultValue = "1") int currentPage,
             @RequestParam(value = "search", defaultValue = "") String search,
             @RequestParam(value = "accept", defaultValue = "") List<AcceptStatus> acceptStatusList,
+            @RequestParam(value = "area", defaultValue = "") String area,
             Model model
     ) throws Exception {
-        // TODO : search 와 acceptStatusList를 가져오기
-        System.out.println(search);
-        System.out.println(acceptStatusList.toString());
+        // System.out.println(search);
+        // System.out.println(acceptStatusList.toString());
+        // System.out.println(area);
 
         // 이 데이터를 가지고 쿼리문을 작성하면 됨 AcceptStatus.A.getKorName();
-        CultureFacilityBoardRequest req = new CultureFacilityBoardRequest(currentPage, search, acceptStatusList);
+        CultureFacilityBoardRequest req = new CultureFacilityBoardRequest(currentPage, search, acceptStatusList, area);
         CultureFacilityBoardResponse resp = cultureService.selectList(req);
 
         model.addAttribute("selectCultureList", resp.getCultureFacilityList());
         model.addAttribute("pi", resp.getPageInfo());
         return "facility/cultureListPage";
     }
+
+
 
 
 
@@ -151,6 +154,13 @@ public class CultureController {
         }
     }
 
+    /**
+     *   TODO : 회원 최근 본 목록
+     *      1. 목록에서 사용자가 클릭해서 Detail 들어감
+     *      2. 그 시점에 Member 테이블의 Latest_Search 컬럼에 SVCID 를 저장
+     *      3. 최근 본 데이터가 필요한 시점에 loginUser 가 세션에 있을테니까
+     *      4. 그 loginUser.getLatestSearch() 를 꺼내서 Culture~~ 조회
+     */
 
 
 

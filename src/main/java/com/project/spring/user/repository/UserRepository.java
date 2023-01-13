@@ -1,5 +1,8 @@
 package com.project.spring.user.repository;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,4 +21,17 @@ public class UserRepository {
 		return sqlSession.insert("userMapper.insert", user);
 	}
 
+	public boolean exist(String provider, long providerId) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("provider", provider);
+		params.put("providerId", providerId);
+		return sqlSession.selectOne("userMapper.select", params) != null;
+	}
+
+	public User find(String provider, long providerId) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("provider", provider);
+		params.put("providerId", providerId);
+		return sqlSession.selectOne("userMapper.select", params);
+	}
 }

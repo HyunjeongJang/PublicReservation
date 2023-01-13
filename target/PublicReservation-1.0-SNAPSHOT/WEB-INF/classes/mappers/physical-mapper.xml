@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="physicalMapper">
+
+    <resultMap id="PhysicalFacility" type="physical">
+        <result column="SVCID" property="svcId" />
+        <result column="MINCLASSNM" property="minClassNm" />
+        <result column="SVCSTATNM" property="svcStatNm" />
+        <result column="SVCNM" property="svcNm" />
+        <result column="PLACENM" property="placeNm" />
+        <result column="X" property="x" />
+        <result column="Y" property="y" />
+        <result column="SVCOPNBGNDT" property="svcOpnBgnDt" />
+        <result column="SVCOPNENDDT" property="svcOpnEnDdt" />
+        <result column="RCPTBGNDT" property="rcptBgnDt" />
+        <result column="RCPTENDDT" property="rcptEndDt" />
+        <result column="AREANM" property="areaNm" />
+        <result column="TELNO" property="telNo" />
+        <result column="IMGURL" property="imgUrl" />
+        <result column="REVSTDDAY" property="revStdDay" />
+    </resultMap>
+
+    <select id="findAll" >
+        
+    </select>
+
+
+
+    <insert id="PhysicalDB">
+        INSERT INTO PHYSICAL_FACILITY
+        VALUES (#{svcid},
+                #{minClassNm},
+                #{svcStatNm},
+                #{svcNm},
+                #{placeNm},
+                #{x},
+                #{y},
+                #{svcOpnBgnDt},
+                #{svcOpnEnDdt},
+                #{rcptBgnDt},
+                #{rcptEndDt},
+                #{areaNm},
+                #{telNo},
+                #{imgUrl},
+                #{revStdDay})
+    </insert>
+
+    <delete id="deleteDb">
+        TRUNCATE TABLE PHYSICAL_FACILITY
+    </delete>
+
+    <select id="PhysicalList" resultMap="PhysicalFacility">
+        SELECT*
+        FROM PHYSICAL_FACILITY
+    </select>
+
+
+    <select id="count" resultType="int" parameterType="com.project.spring.common.SearchDto">
+        SELECT COUNT(*)
+        FROM PHYSICAL_FACILITY
+    </select>
+
+
+
+    <select id="selectList" resultMap="PhysicalFacility" parameterType="com.project.spring.common.SearchDto">
+    SELECT
+    SVCID, MINCLASSNM, SVCSTATNM, SVCNM, PLACENM, X, Y, SVCOPNBGNDT, SVCOPNENDDT,
+    RCPTBGNDT, RCPTENDDT, AREANM, TELNO, IMGURL, REVSTDDAY
+    FROM PHYSICAL_FACILITY
+    </select>
+
+
+</mapper>
