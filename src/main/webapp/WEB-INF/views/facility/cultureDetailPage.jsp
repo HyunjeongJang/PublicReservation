@@ -52,6 +52,16 @@
                     <td colspan="4"><p style="height: 150px;">예약정보</p></td>
                 </tr>
             </table>
+
+            <div class="support">
+                <button onclick="movePage();">예약하기</button>
+                <script>
+                    function movePage(){
+                        location.href='${pageContext.request.contextPath}/support?svcid=${cultureDetail.svcId}';
+                    }
+                </script>
+            </div>
+
         </div>
 
         <br>

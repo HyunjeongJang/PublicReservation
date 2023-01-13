@@ -40,7 +40,7 @@ public class CultureServiceImpl implements CultureService {
         List<CultureFacility> cultures = seoulApiClient.getReservationCultureList()
                 .stream()
                 // .map(culture -> CultureFacility.of(culture))
-                .filter(culture -> culture.getServiceState().equals("접수중"))
+//                .filter(culture -> culture.getServiceState().equals("접수중"))
                 .map(CultureFacility::of)// Lambda 가 아니라 메소드참조 형태로 들어간 부분
                 .collect(Collectors.toList());
 

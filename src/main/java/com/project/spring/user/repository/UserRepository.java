@@ -3,6 +3,7 @@ package com.project.spring.user.repository;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.project.spring.client.oauth.dto.naver.NaverOauthAttribute;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,4 +35,10 @@ public class UserRepository {
 		params.put("providerId", providerId);
 		return sqlSession.selectOne("userMapper.select", params);
 	}
+
+	public int insertNaverUser(NaverOauthAttribute naverOauthAttribute) {
+		return  sqlSession.insert("userMapper.naverInsert",naverOauthAttribute);
+	}
+
+
 }

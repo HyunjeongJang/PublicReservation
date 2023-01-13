@@ -27,4 +27,15 @@
         SELECT * FROM MEMBER WHERE PROVIDER = #{provider} AND PROVIDER_ID = #{providerId}
     </select>
 
+
+
+    <insert id="naverInsert" parameterType="user">
+        INSERT INTO MEMBER
+            (USER_NO, USERNAME, EMAIL, PROFILE_IMAGE)
+        VALUES
+            (SEQ_UNO.NEXTVAL,#{username}, #{email}, #{profileImage})
+    </insert>
+
+
+
 </mapper>

@@ -26,6 +26,7 @@
             <a href="https://kauth.kakao.com/oauth/authorize?client_id=d1bcff54c37052ab7ac6c06c5902e5ca&redirect_uri=http://localhost:8090/PublicReservation/login&response_type=code">
                 <img src="<c:url value="/resources/images/oauth/kakao_login_medium_wide.png"/>">
             </a>
+            <a href="${urlNaver}">네이버</a>
         </span>
     </div>
 

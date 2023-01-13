@@ -1,5 +1,6 @@
 package com.project.spring.user.service;
 
+import com.project.spring.client.oauth.dto.naver.NaverOauthAttribute;
 import org.springframework.stereotype.Service;
 
 import com.project.spring.client.oauth.KakaoOAuthClient;
@@ -34,5 +35,17 @@ public class UserService {
             return user;
         }
     }
+
+
+
+
+    public NaverOauthAttribute NaverLogin(NaverOauthAttribute naverOauthAttribute) {
+        userRepository.insertNaverUser(naverOauthAttribute);
+
+        return naverOauthAttribute;
+
+    }
+
+
 
 }
